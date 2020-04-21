@@ -8,5 +8,5 @@ package cn.cqsw.mapper;
  * @author BaiMo
  * @since JDK 1.8
  */
-public class Mapper {
+public interface Mapper {
 }

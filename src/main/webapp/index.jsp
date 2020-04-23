@@ -11,6 +11,7 @@
     <title>主页</title>
 </head>
 <body>
+<h1>你瞅啥？</h1>
 <%--<% response.sendRedirect("/student?method=findStudents");%>--%>
 </body>
 </html>

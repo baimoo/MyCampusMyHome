@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
 
 /**
  * ClassName: BaseServlet
- * Description:
+ * Description:Servlet基础类
  * date: 2020/4/21 00021 11:59:27
  *
  * @author BaiMo
@@ -17,12 +17,12 @@ import java.lang.reflect.Method;
  */
 public class BaseServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         doPost(req, resp);
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         //设置编码集
         req.setCharacterEncoding("UTF-8");
         //获取方法名

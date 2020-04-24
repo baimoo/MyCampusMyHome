@@ -9,4 +9,5 @@ package cn.cqsw.mapper;
  * @since JDK 1.8
  */
 public interface StudentMapper {
+    //
 }

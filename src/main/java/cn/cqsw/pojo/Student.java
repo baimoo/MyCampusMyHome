@@ -1,6 +1,7 @@
 package cn.cqsw.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ClassName: Student
@@ -26,10 +27,9 @@ public class Student implements Serializable {
     private int state;//入住状态 0/1 入住/迁出
     private Room room;//寝室
 
-    public Student() {
-    }
+    private List<Late> lates;//缺寝记录
 
-    public Student(String sid, String pwd, String name, int sex, String cName, int state, Room room) {
+    public Student(String sid, String pwd, String name, int sex, String cName, int state, Room room, List<Late> lates) {
         this.sid = sid;
         this.pwd = pwd;
         this.name = name;
@@ -37,6 +37,32 @@ public class Student implements Serializable {
         this.cName = cName;
         this.state = state;
         this.room = room;
+        this.lates = lates;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid='" + sid + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                ", cName='" + cName + '\'' +
+                ", state=" + state +
+                ", room=" + room +
+                ", lates=" + lates +
+                '}';
+    }
+
+    public List<Late> getLates() {
+        return lates;
+    }
+
+    public void setLates(List<Late> lates) {
+        this.lates = lates;
+    }
+
+    public Student() {
     }
 
     public String getSid() {
@@ -95,16 +121,4 @@ public class Student implements Serializable {
         this.room = room;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "sid='" + sid + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", name='" + name + '\'' +
-                ", sex=" + sex +
-                ", cName='" + cName + '\'' +
-                ", state=" + state +
-                ", room=" + room +
-                '}';
-    }
 }

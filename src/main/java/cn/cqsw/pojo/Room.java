@@ -1,6 +1,7 @@
 package cn.cqsw.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ClassName: Room
@@ -24,16 +25,40 @@ public class Room implements Serializable {
     private String phone;//电话
     private String type;//寝室类型
 
-    public Room() {
-    }
+    private List<Student> students;//学生
 
-    public Room(int rid, String code, Building building, int num, String phone, String type) {
+    public Room(int rid, String code, Building building, int num, String phone, String type, List<Student> students) {
         this.rid = rid;
         this.code = code;
         this.building = building;
         this.num = num;
         this.phone = phone;
         this.type = type;
+        this.students = students;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "rid=" + rid +
+                ", code='" + code + '\'' +
+                ", building=" + building +
+                ", num=" + num +
+                ", phone='" + phone + '\'' +
+                ", type='" + type + '\'' +
+                ", students=" + students +
+                '}';
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public Room() {
     }
 
     public int getRid() {
@@ -84,15 +109,4 @@ public class Room implements Serializable {
         this.type = type;
     }
 
-    @Override
-    public String toString() {
-        return "Room{" +
-                "rid=" + rid +
-                ", code='" + code + '\'' +
-                ", building=" + building +
-                ", num=" + num +
-                ", phone='" + phone + '\'' +
-                ", type='" + type + '\'' +
-                '}';
-    }
 }

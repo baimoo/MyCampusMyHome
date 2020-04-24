@@ -1,6 +1,7 @@
 package cn.cqsw.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ClassName: BuildingAdmin
@@ -24,16 +25,41 @@ public class BuildingAdmin implements Serializable {
     private int sex;//性别 0/1 女/男
     private String phone;//电话
 
-    public BuildingAdmin() {
-    }
+    private List<Building> buildings;//楼宇
 
-    public BuildingAdmin(int baid, String name, String uid, String pwd, int sex, String phone) {
+
+    public BuildingAdmin(int baid, String name, String uid, String pwd, int sex, String phone, List<Building> buildings) {
         this.baid = baid;
         this.name = name;
         this.uid = uid;
         this.pwd = pwd;
         this.sex = sex;
         this.phone = phone;
+        this.buildings = buildings;
+    }
+
+    public List<Building> getBuildings() {
+        return buildings;
+    }
+
+    public void setBuildings(List<Building> buildings) {
+        this.buildings = buildings;
+    }
+
+    @Override
+    public String toString() {
+        return "BuildingAdmin{" +
+                "baid=" + baid +
+                ", name='" + name + '\'' +
+                ", uid='" + uid + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", sex=" + sex +
+                ", phone='" + phone + '\'' +
+                ", buildings=" + buildings +
+                '}';
+    }
+
+    public BuildingAdmin() {
     }
 
     public int getBaid() {
@@ -84,15 +110,4 @@ public class BuildingAdmin implements Serializable {
         this.phone = phone;
     }
 
-    @Override
-    public String toString() {
-        return "BuildingAdmin{" +
-                "baid=" + baid +
-                ", name='" + name + '\'' +
-                ", uid='" + uid + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", sex=" + sex +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
 }

@@ -13,21 +13,43 @@ import java.io.Serializable;
  * date	    datetime	    非空	    缺寝时间
  * remark	varchar(255)	非空	    缺寝备注
  * sid	    varchar(10)	    非空，外键	学生id
+ * baid	    int	            非空，外键	楼宇管理员id
  */
 public class Late implements Serializable {
     private int lid;//编号
     private String date;//缺寝时间
     private String remark;//缺寝备注
     private Student student;//学生
+    private BuildingAdmin buildingAdmin;//楼宇管理员
 
     public Late() {
     }
 
-    public Late(int lid, String date, String remark, Student student) {
+    public Late(int lid, String date, String remark, Student student, BuildingAdmin buildingAdmin) {
         this.lid = lid;
         this.date = date;
         this.remark = remark;
         this.student = student;
+        this.buildingAdmin = buildingAdmin;
+    }
+
+    public BuildingAdmin getBuildingAdmin() {
+        return buildingAdmin;
+    }
+
+    public void setBuildingAdmin(BuildingAdmin buildingAdmin) {
+        this.buildingAdmin = buildingAdmin;
+    }
+
+    @Override
+    public String toString() {
+        return "Late{" +
+                "lid=" + lid +
+                ", date='" + date + '\'' +
+                ", remark='" + remark + '\'' +
+                ", student=" + student +
+                ", buildingAdmin=" + buildingAdmin +
+                '}';
     }
 
     public int getLid() {
@@ -62,13 +84,4 @@ public class Late implements Serializable {
         this.student = student;
     }
 
-    @Override
-    public String toString() {
-        return "Late{" +
-                "lid=" + lid +
-                ", date='" + date + '\'' +
-                ", remark='" + remark + '\'' +
-                ", student=" + student +
-                '}';
-    }
 }

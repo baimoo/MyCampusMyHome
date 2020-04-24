@@ -1,6 +1,7 @@
 package cn.cqsw.pojo;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * ClassName: Building
@@ -20,14 +21,36 @@ public class Building implements Serializable {
     private BuildingAdmin buildingAdmin;//楼宇管理员
     private String remark;//楼宇简介
 
+    private List<Room> rooms;//寝室
+
     public Building() {
     }
 
-    public Building(int bdid, String name, BuildingAdmin buildingAdmin, String remark) {
+    public Building(int bdid, String name, BuildingAdmin buildingAdmin, String remark, List<Room> rooms) {
         this.bdid = bdid;
         this.name = name;
         this.buildingAdmin = buildingAdmin;
         this.remark = remark;
+        this.rooms = rooms;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "bdid=" + bdid +
+                ", name='" + name + '\'' +
+                ", buildingAdmin=" + buildingAdmin +
+                ", remark='" + remark + '\'' +
+                ", rooms=" + rooms +
+                '}';
     }
 
     public int getBdid() {
@@ -62,13 +85,4 @@ public class Building implements Serializable {
         this.remark = remark;
     }
 
-    @Override
-    public String toString() {
-        return "Building{" +
-                "bdid=" + bdid +
-                ", name='" + name + '\'' +
-                ", buildingAdmin=" + buildingAdmin +
-                ", remark='" + remark + '\'' +
-                '}';
-    }
 }

@@ -8,10 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html>
 <head>
-    <title>主页</title>
+    <title>欢迎登录</title>
 </head>
 <body>
-<h1>你瞅啥？</h1>
-<%--<% response.sendRedirect("/student?method=findStudents");%>--%>
+
 </body>
 </html>

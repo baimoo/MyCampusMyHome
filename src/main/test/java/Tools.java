@@ -221,4 +221,17 @@ public class Tools {
         return str;
 
     }
+
+    /**
+     * Description: 随机返回0或1
+     *
+     * @param
+     * @return 随机0或1
+     * @author: BaiMo
+     * @date: 2020/4/25 0025 19:51:53
+     */
+    public static int getRandom0Or1() {
+        Random random = new Random();
+        return random.nextInt(2);
+    }
 }

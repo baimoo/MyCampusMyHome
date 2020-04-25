@@ -1,5 +1,8 @@
 package cn.cqsw.mapper;
 
+import cn.cqsw.pojo.Late;
+import org.apache.ibatis.annotations.Insert;
+
 /**
  * ClassName: LateMapper
  * Description:缺寝表实体类接口
@@ -9,4 +12,7 @@ package cn.cqsw.mapper;
  * @since JDK 1.8
  */
 public interface LateMapper {
+    //新增缺寝记录
+    @Insert("insert into late values(default,#{date},#{remark},#{student.sid},#{buildingAdmin.baid})")
+    int insertLate(Late late);
 }

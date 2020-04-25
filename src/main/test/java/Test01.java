@@ -155,4 +155,157 @@ public class Test01 {
         room = new Room(0, "E1004", building, 4, Tools.getPhone(), "四人间", null);
         System.out.println(roomMapper.insertRoom(room));
     }
+
+    @Test
+    public void insertStudent() {//新增学生
+        Room room = new Room();
+        room.setRid(1);
+        Student student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(1);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(1);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(1);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(2);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(2);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(3);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(3);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(3);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(4);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(5);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(6);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "计网1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(7);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "计网1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(8);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "计网2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(9);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "计网2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(10);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "计网3班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(11);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据3班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(12);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "大数据4班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(13);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "软件1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(14);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "软件2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(15);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "图文1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(16);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "图文1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(17);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "图文2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(18);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "图文2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(19);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "媒体1班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+        room.setRid(20);
+        student = new Student(Tools.getRandom(20181000, 20189999) + "", "123", Tools.getName(), Tools.getRandom0Or1(), "媒体2班", 0, room, null);
+        System.out.println(studentMapper.insertStudent(student));
+    }
+
+    @Test
+    public void insertLate() {//新增缺寝记录
+        BuildingAdmin buildingAdmin = new BuildingAdmin();
+        Student student = new Student();
+        buildingAdmin.setBaid(3);
+        student.setSid("20185136");
+        Late late = new Late(0, "2020-04-01", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-02", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-03", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-04", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-05", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-06", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-07", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-08", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-09", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-10", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-11", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-12", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-13", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-14", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-15", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-16", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-17", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-18", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-19", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-20", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+        late = new Late(0, "2020-04-21", "沉迷学习忘记归寝", student, buildingAdmin);
+        lateMapper.insertLate(late);
+    }
+
+    @Test
+    public void insertQuit() {//添加迁出记录，同时更新学生状态
+        try {
+            BuildingAdmin buildingAdmin = new BuildingAdmin();
+            Student student = new Student();
+            buildingAdmin.setBaid(3);
+            student.setSid("20185136");
+            student.setState(1);
+            Quit quit = new Quit(0, student, "2020-04-25", "受不了楼宇管理员的唠叨，干脆搬走", buildingAdmin);
+            quitMapper.insertQuit(quit);
+            studentMapper.updateStudentStateBySid(student);
+        } catch (Exception e) {
+            sqlSession.rollback();//事务回滚
+            System.out.println("迁出失败！");
+            e.printStackTrace();
+        }
+
+
+    }
 }

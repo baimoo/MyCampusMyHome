@@ -2,7 +2,10 @@ package cn.cqsw.mapper;
 
 import cn.cqsw.pojo.Student;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+
+import java.util.List;
 
 /**
  * ClassName: StudentMapper
@@ -23,4 +26,10 @@ public interface StudentMapper {
 
     //通过学号和密码查询学生
     Student selectStudentBySidAndPwd(Student student);
+
+    //通过学号查询学生
+    Student selectStudentBySid(String sid);
+
+    //通过寝室rid查询学生
+    List<Student> selectStudentsByRid(int rid);
 }

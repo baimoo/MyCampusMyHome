@@ -2,6 +2,9 @@ package cn.cqsw.mapper;
 
 import cn.cqsw.pojo.Building;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * ClassName: BuildingMapper
@@ -15,6 +18,14 @@ public interface BuildingMapper {
     //增加楼宇
     @Insert("insert into building values(default,#{name},#{buildingAdmin.baid},#{remark})")
     int insertBuilding(Building building);
-    //查询所有楼宇
 
+    //通过楼宇管理员baid查询楼宇
+    @Select("select * from Building where baid=#{baid}")
+    List<Building> selectBuildingsByBaid(int baid);
+    //查询所有楼宇
+    List<Building> selectBuildings();
+
+    //通过楼宇编号bdid查询楼宇
+    @Select("select * from Building where bdid=#{bdid}")
+    Building selectBuildingByBdid(int bdid);
 }

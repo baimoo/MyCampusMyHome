@@ -3,5 +3,16 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.cqsw.mapper.LateMapper">
-
+    <resultMap id="r1" type="cn.cqsw.pojo.Late">
+        <id property="lid" column="lid"></id>
+        <result property="date" column="date"></result>
+        <result property="remark" column="remark"></result>
+        <association property="student" column="sid"
+                     select="cn.cqsw.mapper.StudentMapper.selectStudentBySid"></association>
+        <association property="buildingAdmin" column="baid"
+                     select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
+    </resultMap>
+    <!--<select id="selectLatesBySid" resultMap="r1">-->
+    <!--select * from late where sid=#{sid}-->
+    <!--</select>-->
 </mapper>

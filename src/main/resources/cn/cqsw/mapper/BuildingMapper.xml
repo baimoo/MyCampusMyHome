@@ -3,5 +3,15 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.cqsw.mapper.BuildingMapper">
-
+    <resultMap id="r1" type="cn.cqsw.pojo.Building">
+        <id property="bdid" column="bdid"></id>
+        <result property="name" column="name"></result>
+        <result property="remark" column="remark"></result>
+        <association property="buildingAdmin" column="baid"
+                     select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
+        <collection property="rooms" column="bdid" select="cn.cqsw.mapper.RoomMapper.selectRoomsByBdid"></collection>
+    </resultMap>
+    <select id="selectBuildings" resultMap="r1">
+        select * from Building;
+    </select>
 </mapper>

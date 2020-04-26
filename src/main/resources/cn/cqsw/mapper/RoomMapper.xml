@@ -3,5 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.cqsw.mapper.RoomMapper">
-
+    <resultMap id="r1" type="cn.cqsw.pojo.Room">
+        <id column="rid" property="rid"></id>
+        <result property="code" column="code"></result>
+        <result property="num" column="num"></result>
+        <result property="phone" column="phone"></result>
+        <result property="type" column="type"></result>
+        <association property="building" column="bdid"
+                     select="cn.cqsw.mapper.BuildingMapper.selectBuildingByBdid"></association>
+        <collection property="students" column="rid" select="cn.cqsw.mapper.RoomMapper.selectRoomByRid"></collection>
+    </resultMap>
+    <select id="selectRoomsByBdid" resultMap="r1">
+        select * from room where bdid=#{bdid};
+    </select>
+    <!--<select id="selectRoomByRid" resultMap="r1">-->
+    <!--select * from room where rid=#{rid};-->
+    <!--</select>-->
 </mapper>

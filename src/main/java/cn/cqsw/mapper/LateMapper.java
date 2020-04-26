@@ -2,6 +2,9 @@ package cn.cqsw.mapper;
 
 import cn.cqsw.pojo.Late;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 /**
  * ClassName: LateMapper
@@ -15,4 +18,8 @@ public interface LateMapper {
     //新增缺寝记录
     @Insert("insert into late values(default,#{date},#{remark},#{student.sid},#{buildingAdmin.baid})")
     int insertLate(Late late);
+
+    //通过学生学号sid查询缺寝记录
+    @Select("select * from late where sid=#{sid}")
+    List<Late> selectLatesBySid(String sid);
 }

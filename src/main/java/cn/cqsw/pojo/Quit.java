@@ -13,7 +13,7 @@ import java.io.Serializable;
  * sid	        varchar(10)	非空，外键	学生id
  * date	        date	    非空	    迁出时间
  * quitRemark	varchar(255)		    迁出备注
- * baid	        int	        非空，外键	楼层管理员id
+ * baid	        int	        非空，外键	楼宇管理员id
  */
 public class Quit implements Serializable {
     private int qid;//编号

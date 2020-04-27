@@ -1,10 +1,18 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: BaiMo
+  Date: 2020/4/27 0027
+  Time: 18:13:19
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>404 Page | Kiaalap - Kiaalap Admin Template</title>
+    <title>Login | Kiaalap - Kiaalap Admin Template</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -47,6 +55,9 @@
 		============================================ -->
     <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- forms CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/form/all-type-forms.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="style.css">
@@ -60,16 +71,49 @@
 
 <body>
 <!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
+<p class="browserupgrade">你正在使用<strong>旧</strong> 浏览器。请 <a href="https://www.google.cn/chrome/">更新你的浏览器</a>改善体验。</p>
 <![endif]-->
 <div class="error-pagewrap">
     <div class="error-page-int">
+        <div class="text-center m-b-md custom-login">
+            <h3>登录系统<br/>我的校园我的家</h3>
+            <p>“进了这儿就像回家一样，我超喜欢这里的！”——窃·格瓦拉</p>
+        </div>
         <div class="content-error">
-            <h1>ERROR <span class="counter"> 404</span></h1>
-            <p>哎鸭，当前页面被小怪兽吃啦！</p>
-            <a href="#主页">主页</a>
-            <a href="#主页">提交问题</a>
+            <div class="hpanel">
+                <div class="panel-body">
+                    <form action="/system?method=login" id="loginForm" method="post">
+                        <div class="form-group">
+                            <label class="control-label" for="username">身份</label>
+                            <select class="form-control custom-select-value"
+                                    name="level">
+                                <option value="0">系统管理员</option>
+                                <option value="1">楼宇管理员</option>
+                                <option value="2" selected="selected">学生</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="username">帐号</label>
+                            <input type="text" placeholder="" title="请输入你的帐号"
+                                   required="" value="" name="username" id="username" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="password">密码</label>
+                            <input type="password" title="请输入你的密码" placeholder="" required=""
+                                   value="" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="checkbox login-checkbox">
+                            <label>
+                                <input type="checkbox" name="state" class="i-checks" checked="checked"><b>
+                                记住我 </b></label>
+                            <p class="help-block small">(请不要在公用电脑勾选此项)</p>
+                        </div>
+                        <button class="btn btn-success btn-block loginbtn">登录</button>
+                        <a class="btn btn-default btn-block" href="#">注册</a>
+                        <a class="btn btn-default btn-block" href="#">忘记密码？</a>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="text-center login-footer">
             <p>Copyright © 重案组</p>
@@ -104,27 +148,17 @@
     ============================================ -->
 <script src="js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
 <script src="js/scrollbar/mCustomScrollbar-active.js"></script>
-<!-- counterup JS
-    ============================================ -->
-<script src="js/counterup/jquery.counterup.min.js"></script>
-<script src="js/counterup/waypoints.min.js"></script>
-<script src="js/counterup/counterup-active.js"></script>
 <!-- metisMenu JS
     ============================================ -->
 <script src="js/metisMenu/metisMenu.min.js"></script>
 <script src="js/metisMenu/metisMenu-active.js"></script>
-<!-- morrisjs JS
-    ============================================ -->
-<script src="js/sparkline/jquery.sparkline.min.js"></script>
-<script src="js/sparkline/jquery.charts-sparkline.js"></script>
-<!-- calendar JS
-    ============================================ -->
-<script src="js/calendar/moment.min.js"></script>
-<script src="js/calendar/fullcalendar.min.js"></script>
-<script src="js/calendar/fullcalendar-active.js"></script>
 <!-- tab JS
     ============================================ -->
 <script src="js/tab.js"></script>
+<!-- icheck JS
+    ============================================ -->
+<script src="js/icheck/icheck.min.js"></script>
+<script src="js/icheck/icheck-active.js"></script>
 <!-- plugins JS
     ============================================ -->
 <script src="js/plugins.js"></script>

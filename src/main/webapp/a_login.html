@@ -74,11 +74,11 @@
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
-                    <form action="#" id="loginForm">
+                    <form action="#" id="loginForm" method="post">
                         <div class="form-group">
                             <label class="control-label" for="username">身份</label>
                             <select class="form-control custom-select-value"
-                                    name="account">
+                                    name="level">
                                 <option value="0">系统管理员</option>
                                 <option value="1">楼宇管理员</option>
                                 <option value="2" selected="selected">学生</option>
@@ -96,7 +96,8 @@
                         </div>
                         <div class="checkbox login-checkbox">
                             <label>
-                                <input type="checkbox" class="i-checks"><b> 记住我 </b></label>
+                                <input type="checkbox" name="state" class="i-checks" checked="checked"><b>
+                                记住我 </b></label>
                             <p class="help-block small">(请不要在公用电脑勾选此项)</p>
                         </div>
                         <button class="btn btn-success btn-block loginbtn">登录</button>

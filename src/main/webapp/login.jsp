@@ -5,7 +5,7 @@
   Time: 18:13:19
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -64,8 +64,10 @@
     <!-- responsive CSS
 		============================================ -->
     <link rel="stylesheet" href="css/responsive.css">
+    <!--新增样式表-->
+    <link rel="stylesheet" href="css/newCss.css">
     <!-- modernizr JS
-		============================================ -->
+    ============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 
@@ -103,9 +105,15 @@
                                    value="" name="password" id="password" class="form-control">
                         </div>
                         <div class="checkbox login-checkbox">
-                            <label>
-                                <input type="checkbox" name="state" class="i-checks" checked="checked"><b>
-                                记住我 </b></label>
+                            <div class="row">
+                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                                    <label><input type="checkbox" name="state" class="i-checks" checked="checked"><b>
+                                        记住我 </b></label>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 msg">
+                                    ${logMsg}
+                                </div>
+                            </div>
                             <p class="help-block small">(请不要在公用电脑勾选此项)</p>
                         </div>
                         <button class="btn btn-success btn-block loginbtn">登录</button>

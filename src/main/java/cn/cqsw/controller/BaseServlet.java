@@ -27,6 +27,9 @@ public class BaseServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         //获取方法名
         String methodName = req.getParameter("method");
+        //删除属性
+        req.removeAttribute("logMsg");
+        //执行方法
         Method method = null;
         try {
             if (methodName.trim() != "" && (methodName != null)) {

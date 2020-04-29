@@ -26,7 +26,7 @@ public class SystemServlet extends BaseServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String state = req.getParameter("state");//是否记住密码。选中获取到on
-        boolean flag = false;
+
         switch (level) {
             case 0://系统管理员
                 SystemAdmin systemAdmin = new SystemAdmin();
@@ -39,8 +39,26 @@ public class SystemServlet extends BaseServlet {
                     HttpSession session = req.getSession();
                     session.setAttribute("login", systemAdmin);
                     session.setAttribute("level", level);
-                    flag = true;
                     System.out.println("登录成功，跳转到首页");
+                    if (state != null && state.equals("on")) {//如果登录成功，设置cookies
+                        System.out.println("记住密码，设置cookie");
+                        Cookie cookieLevel = new Cookie("level", level + "");
+//            cookieLevel.setPath("/");
+                        cookieLevel.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                        resp.addCookie(cookieLevel);
+                        Cookie cookieUsername = new Cookie("username", username);
+//            cookieUsername.setPath("/");
+                        cookieUsername.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                        resp.addCookie(cookieUsername);
+                        Cookie cookiePassword = new Cookie("password", password);
+//            cookiePassword.setPath("/");
+                        cookiePassword.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                        resp.addCookie(cookiePassword);
+                        Cookie[] cookies = req.getCookies();
+                        for (int i = 0; i < cookies.length; i++) {
+                            System.out.println("登录时获取的cookie：\"" + cookies[i].getName() + "," + cookies[i].getValue() + "\"");
+                        }
+                    }
                     try {
                         req.getRequestDispatcher("/index.jsp").forward(req, resp);
                     } catch (ServletException e) {
@@ -61,21 +79,7 @@ public class SystemServlet extends BaseServlet {
             case 2:
                 break;
         }
-        if (flag && state != null && state.equals("on")) {//如果登录成功，设置cookies
-            System.out.println("记住密码，设置cookie");
-            Cookie cookieLevel = new Cookie("level", level + "");
-            cookieLevel.setPath("/");
-            cookieLevel.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-            resp.addCookie(cookieLevel);
-            Cookie cookieUsername = new Cookie("username", username);
-            cookieUsername.setPath("/");
-            cookieUsername.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-            resp.addCookie(cookieUsername);
-            Cookie cookiePassword = new Cookie("password", password);
-            cookiePassword.setPath("/");
-            cookiePassword.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-            resp.addCookie(cookiePassword);
-        }
+
 
     }
 

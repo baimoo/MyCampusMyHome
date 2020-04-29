@@ -47,7 +47,7 @@ public class LoginFilter implements Filter {
             }
         }
         System.out.println(username + "," + password + "," + level);
-        if (username != null && username.trim().equals("") && password != null && password.trim().equals("") && level != -1) {
+        if (username != null && !username.trim().equals("") && password != null && !password.trim().equals("") && level != -1) {
             switch (level) {
                 case 0://系统管理员
                     SystemAdmin systemAdmin = new SystemAdmin();
@@ -61,6 +61,7 @@ public class LoginFilter implements Filter {
                         session.setAttribute("login", systemAdmin);
                         session.setAttribute("level", level);
                     } else {
+                        request.setAttribute("logMsg", "帐号密码已修改，登录状态失效！");
                     }
                     break;
                 case 1:

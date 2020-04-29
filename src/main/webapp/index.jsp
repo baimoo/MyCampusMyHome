@@ -80,14 +80,14 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="#主页"><img class="main-logo" src="img/logo/logo.png" alt="首页"/></a>
-            <strong><a href="#主页"><img src="img/logo/logosn.png" alt="首页"/></a></strong>
+            <a href="index.jsp"><img class="main-logo" src="img/logo/logo.png" alt="首页"/></a>
+            <strong><a href="index.jsp"><img src="img/logo/logosn.png" alt="首页"/></a></strong>
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li>
-                        <a title="首页" href="a_index.html">
+                        <a title="首页" href="index.jsp">
                             <span class="educate-icon educate-home icon-wrap"></span>
                             <span class="mini-click-non">首页</span>
                         </a>
@@ -157,7 +157,7 @@
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="logo-pro">
-                    <a href="index.jsp"><img class="main-logo" src="img/logo/logo.png" alt="主页"/></a>
+                    <a href="/index.jsp"><img class="main-logo" src="img/logo/logo.png" alt="主页"/></a>
                 </div>
             </div>
         </div>
@@ -204,7 +204,7 @@
                                                    class="nav-link dropdown-toggle">
                                                     <!--头像、姓名-->
                                                     <img src="img/product/pro4.jpg" alt=""/>
-                                                    <span class="admin-name">baimo</span>
+                                                    <span class="admin-name">${login.name}</span>
                                                     <i class="fa fa-angle-down edu-icon edu-down-arrow"></i>
                                                 </a>
                                                 <!--用户名下功能菜单-->
@@ -240,7 +240,7 @@
                                 <ul class="mobile-menu-nav">
                                     <!--li标签与pc端一样-->
                                     <li>
-                                        <a title="首页" href="a_index.html">
+                                        <a title="首页" href="index.jsp">
                                             <span class="educate-icon educate-home icon-wrap"></span>
                                             <span class="mini-click-non">首页</span>
                                         </a>
@@ -332,9 +332,7 @@
                                 <!--面包屑导航-->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu">
-                                        <li><a href="#">前页</a> <span class="bread-slash">/</span>
-                                        </li>
-                                        <li><span class="bread-blod">当前页</span>
+                                        <li><a href="/index.jsp">首页</a>
                                         </li>
                                     </ul>
                                 </div>

@@ -19,7 +19,7 @@ public class SystemAdminService {
 
     public SystemAdmin selectSystemAdminByUidAndPwd(SystemAdmin systemAdmin) {
         if (systemAdminMapper == null) {
-            systemAdminMapper = BaseDao.getSqlSession().getMapper(systemAdminMapper.getClass());
+            systemAdminMapper = BaseDao.getSqlSession().getMapper(SystemAdminMapper.class);
         }
         return systemAdminMapper.selectSystemAdminByUidAndPwd(systemAdmin);
     }

@@ -357,7 +357,7 @@
                             <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12">
                             </div>
                             <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12"><span id="hy">欢迎登录:<span
-                                    id="hy2">白墨</span></span>
+                                    id="hy2">${login.name}</span></span>
                             </div>
                         </div>
                     </div>

@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Login | Kiaalap - Kiaalap Admin Template</title>
+    <title>登录 | 我的校园我的家</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -84,7 +84,8 @@
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
-                    <form action="/system?method=login" id="loginForm" method="post">
+                    <form action="/system" id="loginForm" method="post">
+                        <input type="hidden" name="method" value="login">
                         <div class="form-group">
                             <label class="control-label" for="username">身份</label>
                             <select class="form-control custom-select-value"

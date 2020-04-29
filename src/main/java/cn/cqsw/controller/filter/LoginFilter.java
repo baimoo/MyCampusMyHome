@@ -1,7 +1,11 @@
 package cn.cqsw.controller.filter;
 
+import cn.cqsw.pojo.SystemAdmin;
+import cn.cqsw.service.SystemAdminService;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -25,10 +29,50 @@ public class LoginFilter implements Filter {
         //获取拦截路径
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         request.setCharacterEncoding("utf-8");
+        //从cookies中获取登录状态
+        Cookie[] cookies = request.getCookies();
+        String username = null;
+        String password = null;
+        int level = -1;
+        for (int i = 0; i < cookies.length; i++) {
+            System.out.println("获取的cookie：\"" + cookies[i].getName() + "," + cookies[i].getValue() + "\"");
+            if (cookies[i].getName().equals("username")) {
+                username = cookies[i].getValue();
+            }
+            if (cookies[i].getName().equals("password")) {
+                password = cookies[i].getValue();
+            }
+            if (cookies[i].getName().equals("level")) {
+                level = new Integer(cookies[i].getValue());
+            }
+        }
+        System.out.println(username + "," + password + "," + level);
+        if (username != null && username.trim().equals("") && password != null && password.trim().equals("") && level != -1) {
+            switch (level) {
+                case 0://系统管理员
+                    SystemAdmin systemAdmin = new SystemAdmin();
+                    systemAdmin.setUid(username);
+                    systemAdmin.setPwd(password);
+                    //查询用户
+                    systemAdmin = new SystemAdminService().selectSystemAdminByUidAndPwd(systemAdmin);
+                    if (systemAdmin != null) {
+                        //设置登录到会话中
+                        HttpSession session = request.getSession();
+                        session.setAttribute("login", systemAdmin);
+                        session.setAttribute("level", level);
+                    } else {
+                    }
+                    break;
+                case 1:
+                    break;
+                case 2:
+                    break;
+            }
+        }
         String uri = request.getRequestURI();
         //获取请求的方法名
         String methodName = request.getParameter("method");
-        //放行路径：login.jsp  /user?method=login
+        //放行路径：login.jsp  /system?method=login
         if (uri.contains("login.jsp") || (uri.contains("/system") && "login".equals(methodName))) {
             filterChain.doFilter(request, servletResponse);
         } else {

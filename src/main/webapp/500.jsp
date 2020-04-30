@@ -75,8 +75,8 @@
         <div class="content-error">
             <h1>Server Error <span class="counter"> 500</span></h1>
             <p>哎鸭，服务器被小怪兽吃掉啦！</p>
-            <a href="#主页">主页</a>
-            <a href="#主页">提交问题</a>
+            <a href="index.jsp">主页</a>
+            <a href="#">提交问题</a>
         </div>
         <div class="text-center login-footer">
             <p>Copyright © 重案组</p>

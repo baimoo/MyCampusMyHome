@@ -142,7 +142,8 @@
                             <span class="mini-click-non">迁出记录</span></a>
                     </li>
                     <li id="removable">
-                        <a title="退出系统" href="#"><span class="educate-icon educate-pages icon-wrap"></span> <span
+                        <a title="退出系统" href="/system?method=exit" onclick="return confirm('提示：确认退出登录？')"><span
+                                class="educate-icon educate-pages icon-wrap"></span> <span
                                 class="mini-click-non">退出系统</span></a>
                     </li>
                 </ul>
@@ -216,7 +217,8 @@
                                                     <li><a href="#"><span
                                                             class="edu-icon edu-user-rounded author-log-ic"></span>重置密码</a>
                                                     </li>
-                                                    <li><a href="#"><span
+                                                    <li><a title="退出系统" href="/system?method=exit"
+                                                           onclick="return confirm('提示：确认退出登录？')"><span
                                                             class="edu-icon edu-locked author-log-ic"></span>退出登录</a>
                                                     </li>
                                                 </ul>
@@ -302,7 +304,8 @@
                                             <span class="mini-click-non">迁出记录</span></a>
                                     </li>
                                     <li>
-                                        <a title="退出系统" href="#"><span
+                                        <a title="退出系统" href="/system?method=exit"
+                                           onclick="return confirm('提示：确认退出登录？')"><span
                                                 class="educate-icon educate-pages icon-wrap"></span> <span
                                                 class="mini-click-non">退出系统</span></a>
                                     </li>

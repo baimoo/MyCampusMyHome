@@ -43,21 +43,14 @@ public class SystemServlet extends BaseServlet {
                     if (state != null && state.equals("on")) {//如果登录成功，设置cookies
                         System.out.println("记住密码，设置cookie");
                         Cookie cookieLevel = new Cookie("level", level + "");
-//            cookieLevel.setPath("/");
                         cookieLevel.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
                         resp.addCookie(cookieLevel);
                         Cookie cookieUsername = new Cookie("username", username);
-//            cookieUsername.setPath("/");
                         cookieUsername.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
                         resp.addCookie(cookieUsername);
                         Cookie cookiePassword = new Cookie("password", password);
-//            cookiePassword.setPath("/");
                         cookiePassword.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
                         resp.addCookie(cookiePassword);
-                        Cookie[] cookies = req.getCookies();
-                        for (int i = 0; i < cookies.length; i++) {
-                            System.out.println("登录时获取的cookie：\"" + cookies[i].getName() + "," + cookies[i].getValue() + "\"");
-                        }
                     }
                     try {
                         req.getRequestDispatcher("/index.jsp").forward(req, resp);
@@ -86,15 +79,12 @@ public class SystemServlet extends BaseServlet {
     public void exit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("退出登录，删除cookie");
         Cookie cookieLevel = new Cookie("level", "");
-        cookieLevel.setPath("/");
         cookieLevel.setMaxAge(0);//设置cookie0秒有效期，即删除
         resp.addCookie(cookieLevel);
         Cookie cookieUsername = new Cookie("username", "");
-        cookieUsername.setPath("/");
         cookieUsername.setMaxAge(0);//设置cookie0秒有效期，即删除
         resp.addCookie(cookieUsername);
         Cookie cookiePassword = new Cookie("password", "");
-        cookiePassword.setPath("/");
         cookiePassword.setMaxAge(0);//设置cookie0秒有效期，即删除
         resp.addCookie(cookiePassword);
         //删除登录会话登录属性

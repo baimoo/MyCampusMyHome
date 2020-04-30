@@ -35,7 +35,7 @@ public class LoginFilter implements Filter {
         String password = null;
         int level = -1;
         for (int i = 0; i < cookies.length; i++) {
-            System.out.println("获取的cookie：\"" + cookies[i].getName() + "," + cookies[i].getValue() + "\"");
+            System.out.println("拦截器获取的cookieName：\"" + cookies[i].getName() + ",cookieValue：" + cookies[i].getValue() + "\"");
             if (cookies[i].getName().equals("username")) {
                 username = cookies[i].getValue();
             }
@@ -46,7 +46,7 @@ public class LoginFilter implements Filter {
                 level = new Integer(cookies[i].getValue());
             }
         }
-        System.out.println(username + "," + password + "," + level);
+        System.out.println("拦截器查询到历史登录用户：username:" + username + ",password:" + password + ",level:" + level);
         if (username != null && !username.trim().equals("") && password != null && !password.trim().equals("") && level != -1) {
             switch (level) {
                 case 0://系统管理员

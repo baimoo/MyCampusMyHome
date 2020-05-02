@@ -1,6 +1,10 @@
 package cn.cqsw.controller;
 
+import cn.cqsw.pojo.BuildingAdmin;
+import cn.cqsw.pojo.Student;
 import cn.cqsw.pojo.SystemAdmin;
+import cn.cqsw.service.BuildingAdminService;
+import cn.cqsw.service.StudentService;
 import cn.cqsw.service.SystemAdminService;
 
 import javax.servlet.ServletException;
@@ -26,7 +30,8 @@ public class SystemServlet extends BaseServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String state = req.getParameter("state");//是否记住密码。选中获取到on
-
+        HttpSession session = req.getSession();
+        boolean flag = false;
         switch (level) {
             case 0://系统管理员
                 SystemAdmin systemAdmin = new SystemAdmin();
@@ -35,42 +40,60 @@ public class SystemServlet extends BaseServlet {
                 //查询用户
                 systemAdmin = new SystemAdminService().selectSystemAdminByUidAndPwd(systemAdmin);
                 if (systemAdmin != null) {
+                    flag = true;
                     //设置登录到会话中
-                    HttpSession session = req.getSession();
                     session.setAttribute("login", systemAdmin);
-                    session.setAttribute("level", level);
-                    System.out.println("登录成功，跳转到首页");
-                    if (state != null && state.equals("on")) {//如果登录成功，设置cookies
-                        System.out.println("记住密码，设置cookie");
-                        Cookie cookieLevel = new Cookie("level", level + "");
-                        cookieLevel.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-                        resp.addCookie(cookieLevel);
-                        Cookie cookieUsername = new Cookie("username", username);
-                        cookieUsername.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-                        resp.addCookie(cookieUsername);
-                        Cookie cookiePassword = new Cookie("password", password);
-                        cookiePassword.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
-                        resp.addCookie(cookiePassword);
-                    }
-                    try {
-                        req.getRequestDispatcher("/index.jsp").forward(req, resp);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    System.out.println("登录失败，跳转到登录页面");
-                    req.setAttribute("logMsg", "帐号或密码错误！");
-                    try {
-                        req.getRequestDispatcher("/login.jsp").forward(req, resp);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    }
                 }
                 break;
             case 1:
+                BuildingAdmin buildingAdmin = new BuildingAdmin();
+                buildingAdmin.setUid(username);
+                buildingAdmin.setPwd(password);
+                buildingAdmin = new BuildingAdminService().selectBuildingAdminByUidAndPwd(buildingAdmin);
+                if (buildingAdmin != null) {
+                    flag = true;
+                    session.setAttribute("login", buildingAdmin);
+                }
                 break;
             case 2:
+                Student student = new Student();
+                student.setSid(username);
+                student.setPwd(password);
+                student = new StudentService().selectStudentBySidAndPwd(student);
+                if (student != null) {
+                    flag = true;
+                    session.setAttribute("login", student);
+                }
                 break;
+        }
+        if (flag) {
+            session.setAttribute("level", level);
+            System.out.println("登录成功，跳转到首页");
+            if (state != null && state.equals("on")) {//如果登录成功，设置cookies
+                System.out.println("记住密码，设置cookie");
+                Cookie cookieLevel = new Cookie("level", level + "");
+                cookieLevel.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                resp.addCookie(cookieLevel);
+                Cookie cookieUsername = new Cookie("username", username);
+                cookieUsername.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                resp.addCookie(cookieUsername);
+                Cookie cookiePassword = new Cookie("password", password);
+                cookiePassword.setMaxAge(60 * 60 * 24 * 7);//设置七天有效期，单位s
+                resp.addCookie(cookiePassword);
+            }
+            try {
+                req.getRequestDispatcher("/index.jsp").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("登录失败，跳转到登录页面");
+            req.setAttribute("logMsg", "帐号或密码错误！");
+            try {
+                req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            }
         }
 
 

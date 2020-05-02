@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js" lang="ch">
 <head>
@@ -92,55 +93,70 @@
                             <span class="mini-click-non">首页</span>
                         </a>
                     </li>
-                    <li>
-                        <a title="楼宇管理员管理" href="a_add-professor.html"><span
-                                class="educate-icon educate-professor icon-wrap"></span><span class="mini-click-non">楼宇管理员管理</span></a>
-                    </li>
-                    <li>
-                        <a title="学生管理" href="a_add-student.html"><span
-                                class="educate-icon educate-student icon-wrap"></span><span
-                                class="mini-click-non">学生管理</span></a>
-                    </li>
-                    <li>
+                    <c:if test="${level eq 0}">
+                        <li>
+                            <a title="楼宇管理员管理" href="a_add-professor.html"><span
+                                    class="educate-icon educate-professor icon-wrap"></span><span
+                                    class="mini-click-non">楼宇管理员管理</span></a>
+                        </li>
+                        <li>
+                            <a title="学生管理" href="a_add-student.html"><span
+                                    class="educate-icon educate-student icon-wrap"></span><span
+                                    class="mini-click-non">学生管理</span></a>
+                        </li>
+                        <li>
 
-                        <a title="楼宇管理" href="a_all-courses.html"><span
-                                class="educate-icon educate-course icon-wrap"></span> <span
-                                class="mini-click-non">楼宇管理</span></a>
-                    </li>
-                    <li>
-                        <a title="宿舍管理" href="a_events.html"><span
-                                class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
-                                class="mini-click-non">宿舍管理</span></a>
-                    </li>
-                    <li>
-                        <a title="学生入住登记" href="a_all-courses.html"><span
-                                class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">学生入住登记</span></a>
-                    </li>
-                    <li>
-                        <a title="学生寝室调换" href="a_all-courses.html"><span
-                                class="educate-icon educate-department icon-wrap"></span> <span class="mini-click-non">学生寝室调换</span></a>
+                            <a title="楼宇管理" href="a_all-courses.html"><span
+                                    class="educate-icon educate-course icon-wrap"></span> <span
+                                    class="mini-click-non">楼宇管理</span></a>
+                        </li>
+                        <li>
+                            <a title="宿舍管理" href="a_events.html"><span
+                                    class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
+                                    class="mini-click-non">宿舍管理</span></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${level eq 1}">
+                        <li>
+                            <a title="学生管理" href="a_add-student.html"><span
+                                    class="educate-icon educate-student icon-wrap"></span><span
+                                    class="mini-click-non">学生管理</span></a>
+                        </li>
+                        <li>
+                            <a title="学生入住登记" href="a_all-courses.html"><span
+                                    class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">学生入住登记</span></a>
+                        </li>
+                        <li>
+                            <a title="学生寝室调换" href="a_all-courses.html"><span
+                                    class="educate-icon educate-department icon-wrap"></span> <span
+                                    class="mini-click-non">学生寝室调换</span></a>
 
-                    </li>
+                        </li>
 
-                    <li>
-                        <a title="学生迁出登记" href="a_mailbox.html"><span
-                                class="educate-icon educate-interface icon-wrap"></span> <span class="mini-click-non">学生迁出登记</span></a>
-                    </li>
+                        <li>
+                            <a title="学生迁出登记" href="a_mailbox.html"><span
+                                    class="educate-icon educate-interface icon-wrap"></span> <span
+                                    class="mini-click-non">学生迁出登记</span></a>
+                        </li>
 
-                    <li>
-                        <a title="学生缺寝记录" href="a_mailbox.html"><span
-                                class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">学生缺寝记录</span></a>
-                    </li>
-
-                    <li>
-                        <a title="我的缺寝记录" href="a_mailbox.html"><span
-                                class="educate-icon educate-data-table icon-wrap"></span> <span class="mini-click-non">我的缺寝记录</span></a>
-                    </li>
-
-                    <li>
-                        <a title="迁出记录" href="a_mailbox.html"><span class="educate-icon educate-apps icon-wrap"></span>
-                            <span class="mini-click-non">迁出记录</span></a>
-                    </li>
+                        <li>
+                            <a title="学生缺寝记录" href="a_mailbox.html"><span
+                                    class="educate-icon educate-data-table icon-wrap"></span> <span
+                                    class="mini-click-non">学生缺寝记录</span></a>
+                        </li>
+                        <li>
+                            <a title="迁出记录" href="a_mailbox.html"><span
+                                    class="educate-icon educate-apps icon-wrap"></span>
+                                <span class="mini-click-non">迁出记录</span></a>
+                        </li>
+                    </c:if>
+                    <c:if test="${level eq 2}">
+                        <li>
+                            <a title="我的缺寝记录" href="a_mailbox.html"><span
+                                    class="educate-icon educate-data-table icon-wrap"></span> <span
+                                    class="mini-click-non">我的缺寝记录</span></a>
+                        </li>
+                    </c:if>
                     <li id="removable">
                         <a title="退出系统" href="/system?method=exit" onclick="return confirm('提示：确认退出登录？')"><span
                                 class="educate-icon educate-pages icon-wrap"></span> <span
@@ -247,63 +263,72 @@
                                             <span class="mini-click-non">首页</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a title="楼宇管理员管理" href="a_add-professor.html"><span
-                                                class="educate-icon educate-professor icon-wrap"></span><span
-                                                class="mini-click-non">楼宇管理员管理</span></a>
-                                    </li>
-                                    <li>
-                                        <a title="学生管理" href="a_add-student.html"><span
-                                                class="educate-icon educate-student icon-wrap"></span><span
-                                                class="mini-click-non">学生管理</span></a>
-                                    </li>
-                                    <li>
+                                    <c:if test="${level eq 0}">
+                                        <li>
+                                            <a title="楼宇管理员管理" href="a_add-professor.html"><span
+                                                    class="educate-icon educate-professor icon-wrap"></span><span
+                                                    class="mini-click-non">楼宇管理员管理</span></a>
+                                        </li>
+                                        <li>
+                                            <a title="学生管理" href="a_add-student.html"><span
+                                                    class="educate-icon educate-student icon-wrap"></span><span
+                                                    class="mini-click-non">学生管理</span></a>
+                                        </li>
+                                        <li>
 
-                                        <a title="楼宇管理" href="a_all-courses.html"><span
-                                                class="educate-icon educate-course icon-wrap"></span> <span
-                                                class="mini-click-non">楼宇管理</span></a>
-                                    </li>
-                                    <li>
-                                        <a title="宿舍管理" href="a_events.html"><span
-                                                class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
-                                                class="mini-click-non">宿舍管理</span></a>
-                                    </li>
-                                    <li>
-                                        <a title="学生入住登记" href="a_all-courses.html"><span
-                                                class="educate-icon educate-library icon-wrap"></span> <span
-                                                class="mini-click-non">学生入住登记</span></a>
-                                    </li>
-                                    <li>
-                                        <a title="学生寝室调换" href="a_all-courses.html"><span
-                                                class="educate-icon educate-department icon-wrap"></span> <span
-                                                class="mini-click-non">学生寝室调换</span></a>
+                                            <a title="楼宇管理" href="a_all-courses.html"><span
+                                                    class="educate-icon educate-course icon-wrap"></span> <span
+                                                    class="mini-click-non">楼宇管理</span></a>
+                                        </li>
+                                        <li>
+                                            <a title="宿舍管理" href="a_events.html"><span
+                                                    class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
+                                                    class="mini-click-non">宿舍管理</span></a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${level eq 1}">
+                                        <li>
+                                            <a title="学生管理" href="a_add-student.html"><span
+                                                    class="educate-icon educate-student icon-wrap"></span><span
+                                                    class="mini-click-non">学生管理</span></a>
+                                        </li>
+                                        <li>
+                                            <a title="学生入住登记" href="a_all-courses.html"><span
+                                                    class="educate-icon educate-library icon-wrap"></span> <span
+                                                    class="mini-click-non">学生入住登记</span></a>
+                                        </li>
+                                        <li>
+                                            <a title="学生寝室调换" href="a_all-courses.html"><span
+                                                    class="educate-icon educate-department icon-wrap"></span> <span
+                                                    class="mini-click-non">学生寝室调换</span></a>
 
-                                    </li>
+                                        </li>
 
-                                    <li>
-                                        <a title="学生迁出登记" href="a_mailbox.html"><span
-                                                class="educate-icon educate-interface icon-wrap"></span> <span
-                                                class="mini-click-non">学生迁出登记</span></a>
-                                    </li>
+                                        <li>
+                                            <a title="学生迁出登记" href="a_mailbox.html"><span
+                                                    class="educate-icon educate-interface icon-wrap"></span> <span
+                                                    class="mini-click-non">学生迁出登记</span></a>
+                                        </li>
 
-                                    <li>
-                                        <a title="学生缺寝记录" href="a_mailbox.html"><span
-                                                class="educate-icon educate-data-table icon-wrap"></span> <span
-                                                class="mini-click-non">学生缺寝记录</span></a>
-                                    </li>
-
-                                    <li>
-                                        <a title="我的缺寝记录" href="a_mailbox.html"><span
-                                                class="educate-icon educate-data-table icon-wrap"></span> <span
-                                                class="mini-click-non">我的缺寝记录</span></a>
-                                    </li>
-
-                                    <li>
-                                        <a title="迁出记录" href="a_mailbox.html"><span
-                                                class="educate-icon educate-apps icon-wrap"></span>
-                                            <span class="mini-click-non">迁出记录</span></a>
-                                    </li>
-                                    <li>
+                                        <li>
+                                            <a title="学生缺寝记录" href="a_mailbox.html"><span
+                                                    class="educate-icon educate-data-table icon-wrap"></span> <span
+                                                    class="mini-click-non">学生缺寝记录</span></a>
+                                        </li>
+                                        <li>
+                                            <a title="迁出记录" href="a_mailbox.html"><span
+                                                    class="educate-icon educate-apps icon-wrap"></span>
+                                                <span class="mini-click-non">迁出记录</span></a>
+                                        </li>
+                                    </c:if>
+                                    <c:if test="${level eq 2}">
+                                        <li>
+                                            <a title="我的缺寝记录" href="a_mailbox.html"><span
+                                                    class="educate-icon educate-data-table icon-wrap"></span> <span
+                                                    class="mini-click-non">我的缺寝记录</span></a>
+                                        </li>
+                                    </c:if>
+                                    <li id="removable">
                                         <a title="退出系统" href="/system?method=exit"
                                            onclick="return confirm('提示：确认退出登录？')"><span
                                                 class="educate-icon educate-pages icon-wrap"></span> <span

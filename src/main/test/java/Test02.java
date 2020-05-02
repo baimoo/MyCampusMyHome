@@ -28,6 +28,11 @@ public class Test02 extends Test01 {
         System.out.println(buildingAdminMapper.selectBuildingAdminByUidAndPwd(buildingAdmin));
     }
 
+    @Test//查询所有楼宇管理员
+    public void selectBuildingAdmins() {
+        System.out.println(buildingAdminMapper.selectBuildingAdmins());
+    }
+
     @Test//通过帐号密码查询学生
     public void selectStudentBySidAndPwd() {
         Student student = new Student();

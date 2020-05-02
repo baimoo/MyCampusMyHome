@@ -4,6 +4,8 @@ import cn.cqsw.mapper.BaseDao;
 import cn.cqsw.mapper.BuildingAdminMapper;
 import cn.cqsw.pojo.BuildingAdmin;
 
+import java.util.List;
+
 /**
  * ClassName: BuildingAdminService
  * Description:
@@ -37,6 +39,15 @@ public class BuildingAdminService {
             buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
         }
         return buildingAdminMapper.selectBuildingAdminByBaid(baid);
+
+    }
+
+    //查询所有楼宇管理员
+    public List<BuildingAdmin> selectBuildingAdmins() {
+        if (buildingAdminMapper == null) {
+            buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
+        }
+        return buildingAdminMapper.selectBuildingAdmins();
 
     }
 }

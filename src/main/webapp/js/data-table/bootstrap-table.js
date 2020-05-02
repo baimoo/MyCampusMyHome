@@ -464,37 +464,37 @@
 
     BootstrapTable.LOCALES['en-US'] = BootstrapTable.LOCALES.en = {
         formatLoadingMessage: function () {
-            return 'Loading, please wait...';
+            return '加载中,请等待...';
         },
         formatRecordsPerPage: function (pageNumber) {
-            return sprintf('%s rows per page', pageNumber);
+            return sprintf('%s 每页行数', pageNumber);
         },
         formatShowingRows: function (pageFrom, pageTo, totalRows) {
-            return sprintf('Showing %s to %s of %s rows', pageFrom, pageTo, totalRows);
+            return sprintf('显示 %s 行中的 %s 到 %s 行', totalRows, pageFrom, pageTo);
         },
         formatDetailPagination: function (totalRows) {
-            return sprintf('Showing %s rows', totalRows);
+            return sprintf('显示 %s 行', totalRows);
         },
         formatSearch: function () {
-            return 'Search';
+            return '搜索';
         },
         formatNoMatches: function () {
-            return 'No matching records found';
+            return '没有找到匹配的记录';
         },
         formatPaginationSwitch: function () {
-            return 'Hide/Show pagination';
+            return '隐藏/显示 分页';
         },
         formatRefresh: function () {
-            return 'Refresh';
+            return '更新';
         },
         formatToggle: function () {
-            return 'Toggle';
+            return '切换显示';
         },
         formatColumns: function () {
-            return 'Columns';
+            return '列名';
         },
         formatAllRows: function () {
-            return 'All';
+            return '所有';
         }
     };
 

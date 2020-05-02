@@ -16,4 +16,7 @@
     <select id="selectBuildingAdminByUidAndPwd" resultMap="r1">
       select * from BuildingAdmin where uid=#{uid} and pwd=#{pwd}
     </select>
+    <select id="selectBuildingAdmins" resultMap="r1">
+      select * from BuildingAdmin
+    </select>
 </mapper>

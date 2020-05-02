@@ -2,3 +2,7 @@
     color: red;
     font-weight: bold;
 }
+
+#td1 tr td {
+    vertical-align: middle !important;
+}

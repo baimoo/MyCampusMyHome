@@ -4,6 +4,8 @@ import cn.cqsw.pojo.BuildingAdmin;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  * ClassName: BuildingAdminMapper
  * Description:楼宇管理员表实体类接口
@@ -23,4 +25,8 @@ public interface BuildingAdminMapper {
     //通过baid查询楼宇管理员
     @Select("select * from buildingAdmin where baid=#{baid}")
     BuildingAdmin selectBuildingAdminByBaid(int baid);
+
+    //查询所有楼宇管理员
+//    @Select("select * from buildingAdmin where baid=#{baid}")
+    List<BuildingAdmin> selectBuildingAdmins();
 }

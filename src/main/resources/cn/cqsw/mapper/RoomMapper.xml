@@ -11,12 +11,23 @@
         <result property="type" column="type"></result>
         <association property="building" column="bdid"
                      select="cn.cqsw.mapper.BuildingMapper.selectBuildingByBdid"></association>
-        <collection property="students" column="rid" select="cn.cqsw.mapper.RoomMapper.selectRoomByRid"></collection>
+        <collection property="students" column="rid"
+                    select="cn.cqsw.mapper.StudentMapper.selectStudentsByRid"></collection>
     </resultMap>
     <select id="selectRoomsByBdid" resultMap="r1">
         select * from room where bdid=#{bdid};
     </select>
-    <!--<select id="selectRoomByRid" resultMap="r1">-->
-    <!--select * from room where rid=#{rid};-->
-    <!--</select>-->
+
+    <resultMap id="r2" type="cn.cqsw.pojo.Room">
+        <id column="rid" property="rid"></id>
+        <result property="code" column="code"></result>
+        <result property="num" column="num"></result>
+        <result property="phone" column="phone"></result>
+        <result property="type" column="type"></result>
+        <association property="building" column="bdid"
+                     select="cn.cqsw.mapper.BuildingMapper.selectBuildingByBdid"></association>
+    </resultMap>
+    <select id="selectRoomByRid1" resultMap="r2">
+    select * from room where rid=#{rid};
+    </select>
 </mapper>

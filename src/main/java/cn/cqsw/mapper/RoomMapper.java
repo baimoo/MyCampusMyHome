@@ -25,4 +25,7 @@ public interface RoomMapper {
     //通过寝室rid查询寝室
     @Select("select * from room where rid=#{rid}")
     Room selectRoomByRid(int rid);
+
+    //通过寝室rid查询寝室包含楼宇
+    Room selectRoomByRid1(int rid);
 }

@@ -100,7 +100,7 @@
                                     class="mini-click-non">楼宇管理员管理</span></a>
                         </li>
                         <li>
-                            <a title="学生管理" href="a_add-student.html"><span
+                            <a title="学生管理" href="/student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
                                     class="mini-click-non">学生管理</span></a>
                         </li>
@@ -118,7 +118,7 @@
                     </c:if>
                     <c:if test="${level eq 1}">
                         <li>
-                            <a title="学生管理" href="a_add-student.html"><span
+                            <a title="学生管理" href="/student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
                                     class="mini-click-non">学生管理</span></a>
                         </li>
@@ -270,7 +270,7 @@
                                                     class="mini-click-non">楼宇管理员管理</span></a>
                                         </li>
                                         <li>
-                                            <a title="学生管理" href="a_add-student.html"><span
+                                            <a title="学生管理" href="/student?method=selectStudents"><span
                                                     class="educate-icon educate-student icon-wrap"></span><span
                                                     class="mini-click-non">学生管理</span></a>
                                         </li>
@@ -288,7 +288,7 @@
                                     </c:if>
                                     <c:if test="${level eq 1}">
                                         <li>
-                                            <a title="学生管理" href="a_add-student.html"><span
+                                            <a title="学生管理" href="/student?method=selectStudents"><span
                                                     class="educate-icon educate-student icon-wrap"></span><span
                                                     class="mini-click-non">学生管理</span></a>
                                         </li>

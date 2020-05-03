@@ -1,7 +1,10 @@
 import cn.cqsw.pojo.BuildingAdmin;
+import cn.cqsw.pojo.Room;
 import cn.cqsw.pojo.Student;
 import cn.cqsw.pojo.SystemAdmin;
 import org.junit.Test;
+
+import java.util.List;
 
 /**
  * ClassName: Test02
@@ -39,5 +42,21 @@ public class Test02 extends Test01 {
         student.setSid("20185136");
         student.setPwd("123");
         System.out.println(studentMapper.selectStudentBySidAndPwd(student));
+    }
+
+    @Test//查询所有学生包含寝室
+    public void selectStudents() {
+        System.out.println(studentMapper.selectStudents());
+    }
+
+    @Test//查询所有楼宇
+    public void selectBuildings() {
+        System.out.println(buildingMapper.selectBuildings());
+    }
+
+    @Test//通过bdid查询寝室
+    public void selectRoomsByBdid() {
+        List<Room> rooms = roomMapper.selectRoomsByBdid(1);
+        System.out.println(rooms);
     }
 }

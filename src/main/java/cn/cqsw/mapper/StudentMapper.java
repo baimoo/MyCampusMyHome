@@ -1,6 +1,7 @@
 package cn.cqsw.mapper;
 
 import cn.cqsw.pojo.Student;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
@@ -20,6 +21,10 @@ public interface StudentMapper {
     @Insert("insert into student values(#{sid},#{pwd},#{name},#{sex},#{cName},#{state},#{room.rid})")
     int insertStudent(Student student);
 
+    //更新学生信息
+    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state},rid=#{room.rid} where sid=#{sid}")
+    int updateStudent(Student student);
+
     //通过学号更新迁出状态
     @Update("update student set state=#{state} where sid=#{sid}")
     int updateStudentStateBySid(Student student);
@@ -30,6 +35,13 @@ public interface StudentMapper {
     //通过学号查询学生
     Student selectStudentBySid(String sid);
 
+    //通过学号删除学生
+    @Delete("delete from student where sid=#{sid}")
+    int deleteStudentBySid(String sid);
+
     //通过寝室rid查询学生
     List<Student> selectStudentsByRid(int rid);
+
+    //查询所有学生包括寝室号
+    List<Student> selectStudents();
 }

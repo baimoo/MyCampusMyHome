@@ -22,7 +22,19 @@ public class BuildingAdminService {
         if (buildingAdminMapper == null) {
             buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
         }
-        return buildingAdminMapper.insertBuildingAdmin(buildingAdmin);
+        int result = buildingAdminMapper.insertBuildingAdmin(buildingAdmin);
+        BaseDao.getSqlSession().commit();
+        return result;
+    }
+
+    //更新楼宇
+    public int updateBuildingAdmin(BuildingAdmin buildingAdmin) {
+        if (buildingAdminMapper == null) {
+            buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
+        }
+        int result = buildingAdminMapper.updateBuildingAdmin(buildingAdmin);
+        BaseDao.getSqlSession().commit();
+        return result;
     }
 
     //通过帐号密码查询楼宇管理员
@@ -39,6 +51,17 @@ public class BuildingAdminService {
             buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
         }
         return buildingAdminMapper.selectBuildingAdminByBaid(baid);
+
+    }
+
+    //通过baid删除楼宇管理员
+    public int deleteBuildingAdminByBaid(int baid) {
+        if (buildingAdminMapper == null) {
+            buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
+        }
+        int result = buildingAdminMapper.deleteBuildingAdminByBaid(baid);
+        BaseDao.getSqlSession().commit();
+        return result;
 
     }
 

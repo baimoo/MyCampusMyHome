@@ -17,6 +17,7 @@ import java.util.List;
 public class SystemAdminService {
     private SystemAdminMapper systemAdminMapper;
 
+    //查询所有系统管理员
     public SystemAdmin selectSystemAdminByUidAndPwd(SystemAdmin systemAdmin) {
         if (systemAdminMapper == null) {
             systemAdminMapper = BaseDao.getSqlSession().getMapper(SystemAdminMapper.class);

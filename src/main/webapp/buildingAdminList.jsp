@@ -1,3 +1,12 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: BaiMo
+  Date: 2020/5/3 0003
+  Time: 15:38:49
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -83,14 +92,14 @@
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="#主页"><img class="main-logo" src="img/logo/logo.png" alt="首页"/></a>
-            <strong><a href="#主页"><img src="img/logo/logosn.png" alt="首页"/></a></strong>
+            <a href="index.jsp"><img class="main-logo" src="img/logo/logo.png" alt="首页"/></a>
+            <strong><a href="index.jsp"><img src="img/logo/logosn.png" alt="首页"/></a></strong>
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
                 <ul class="metismenu" id="menu1">
                     <li>
-                        <a title="首页" href="a_index.html">
+                        <a title="首页" href="index.jsp">
                             <span class="educate-icon educate-home icon-wrap"></span>
                             <span class="mini-click-non">首页</span>
                         </a>
@@ -380,7 +389,7 @@
                                                     </button>
                                                     <h4 class="modal-title">新增</h4>
                                                 </div>
-                                                <form method="post" action="#">
+                                                <form method="post" action="/ba?method=insertBuildingAdmin">
                                                     <div class="container-fluid">
                                                         <div class="form-group-inner">
                                                             <label>姓名</label>
@@ -439,24 +448,31 @@
                                     </tr>
                                     </thead>
                                     <tbody id="td1">
-                                    <tr>
-                                        <td></td>
-                                        <td>2</td>
-                                        <td>白墨</td>
-                                        <td>男</td>
-                                        <td>18888888888</td>
-                                        <td>baimo</td>
-                                        <td class="datatable-ct">
-                                            <button id="btn_edit" type="button" class="btn btn-default"
-                                                    data-toggle="modal" data-target="#zpwdupdate">
-                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                                            </button>
-                                            <button id="btn_delete" type="button" class="btn btn-default"
-                                                    data-toggle="modal" data-target="#delmodal">
-                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                                            </button>
+                                    <c:forEach items="${buildingAdmins}" var="buildingAdmin">
+                                        <tr>
+                                            <td></td>
+                                            <td>${buildingAdmin.baid}</td>
+                                            <td>${buildingAdmin.name}</td>
+                                            <td>
+                                                <c:if test="${buildingAdmin.sex eq 0}">女</c:if>
+                                                <c:if test="${buildingAdmin.sex eq 1}">男</c:if>
+                                            </td>
+                                            <td>${buildingAdmin.phone}</td>
+                                            <td>${buildingAdmin.uid}</td>
+                                            <td class="datatable-ct">
+                                                <button id="btn_edit" type="button" class="btn btn-default"
+                                                        data-toggle="modal" data-target="#upmodal${buildingAdmin.baid}">
+                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                                                </button>
+                                                <button id="btn_delete" type="button" class="btn btn-default"
+                                                        data-toggle="modal"
+                                                        data-target="#delmodal${buildingAdmin.baid}">
+                                                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                                                </button>
+                                            </td>
                                             <!-- 修改模态框（Modal） -->
-                                            <div class="modal fade" id="zpwdupdate" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="upmodal${buildingAdmin.baid}" tabindex="-1"
+                                                 role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -467,34 +483,46 @@
                                                             <h4 class="modal-title" id="myModalLabel">修改</h4>
                                                         </div>
                                                         <br/>
-                                                        <form method="post" action="#">
+                                                        <form method="post" action="/ba?method=updateBuildingAdmin">
                                                             <div class="container-fluid">
+                                                                <input type="hidden" value="${buildingAdmin.baid}"
+                                                                       name="baid">
                                                                 <div class="form-group-inner">
                                                                     <label>姓名</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="10字以内中文字符" name="name">
+                                                                           placeholder="10字以内中文字符" name="name"
+                                                                           value="${buildingAdmin.name}">
                                                                 </div>
                                                                 <div class="form-group-inner">
                                                                     <label>性别</label>
                                                                     <select class="form-control custom-select-value"
                                                                             name="sex">
-                                                                        <option value="1">男</option>
-                                                                        <option value="0">女</option>
+                                                                        <option value="0"
+                                                                                <c:if test="${buildingAdmin.sex eq 0}">selected="selected"</c:if>>
+                                                                            女
+                                                                        </option>
+                                                                        <option value="1"
+                                                                                <c:if test="${buildingAdmin.sex eq 1}">selected="selected"</c:if>>
+                                                                            男
+                                                                        </option>
                                                                     </select>
                                                                 </div>
                                                                 <div class="form-group-inner">
                                                                     <label>电话</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="11位电话号码" name="phone">
+                                                                           placeholder="11位电话号码" name="phone"
+                                                                           value="${buildingAdmin.phone}">
                                                                 </div>
                                                                 <div class="form-group-inner">
                                                                     <label>用户名</label>
                                                                     <input type="text" class="form-control"
-                                                                           placeholder="20位以内字符" name="uid">
+                                                                           placeholder="20位以内字符" name="uid"
+                                                                           value="${buildingAdmin.uid}">
                                                                 </div>
                                                                 <label>密码</label>
                                                                 <input type="password" class="form-control"
-                                                                       placeholder="20位以内字符" name="pwd">
+                                                                       placeholder="20位以内字符" name="pwd"
+                                                                       value="${buildingAdmin.pwd}">
                                                             </div>
                                                             <br/>
                                                             <div class="modal-footer">
@@ -509,7 +537,8 @@
                                                 </div>
                                             </div>
                                             <!-- 删除模态框（Modal） -->
-                                            <div class="modal fade" id="delmodal" tabindex="-1" role="dialog"
+                                            <div class="modal fade" id="delmodal${buildingAdmin.baid}" tabindex="-1"
+                                                 role="dialog"
                                                  aria-labelledby="myModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -521,11 +550,14 @@
                                                         </div>
                                                         <br/>
                                                         <div class="container-fluid">
-                                                            <h4 style="color: red">您确定要删除吗？删除后无法恢复！</h4>
+                                                            <h4>您确定要删除<span
+                                                                    style="color: red">${buildingAdmin.name}</span>吗？删除后无法恢复！
+                                                            </h4>
                                                             <br>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <a href="#" class="btn btn-danger"
+                                                            <a href="/ba?method=delBuildingAdminByBaid&baid=${buildingAdmin.baid}"
+                                                               class="btn btn-danger"
                                                                style="color: white">要你管！</a>
                                                             <button type="button" class="btn btn-default"
                                                                     data-dismiss="modal">算了吧..
@@ -534,8 +566,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
+                                        </tr>
+                                    </c:forEach>
                                     </tbody>
                                 </table>
                             </div>
@@ -623,6 +655,13 @@
 <!-- main JS
     ============================================ -->
 <script src="js/main.js"></script>
-</body>
 
+
+</body>
+<!--错误信息-->
+<c:if test="${not empty errorMsg}">
+    <script type="text/javascript">
+        alert("${errorMsg}")
+    </script>
+</c:if>
 </html>

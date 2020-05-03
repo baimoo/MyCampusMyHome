@@ -22,7 +22,7 @@
                 excelstyles: [],            // e.g. ['border-bottom', 'border-top', 'border-left', 'border-right']
                 fileName: 'tableExport',
                 htmlContent: false,
-                ignoreColumn: [],
+                ignoreColumn: [0],
                 ignoreRow: [],
                 jsonScope: 'all',         // head, data, all
                 jspdf: {

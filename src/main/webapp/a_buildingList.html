@@ -1,8 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="en">
-<!---->
-<!--楼宇管理员管理-->
-<!---->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -38,18 +36,12 @@
     <!-- main CSS
 		============================================ -->
     <link rel="stylesheet" href="css/main.css">
-    <!-- forms CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/form/all-type-forms.css">
     <!-- educate icon CSS
 		============================================ -->
     <link rel="stylesheet" href="css/educate-custon-icon.css">
     <!-- morrisjs CSS
 		============================================ -->
     <link rel="stylesheet" href="css/morrisjs/morris.css">
-    <!-- dropzone CSS
-		============================================ -->
-    <link rel="stylesheet" href="css/dropzone/dropzone.css">
     <!-- mCustomScrollbar CSS
 		============================================ -->
     <link rel="stylesheet" href="css/scrollbar/jquery.mCustomScrollbar.min.css">
@@ -61,6 +53,16 @@
 		============================================ -->
     <link rel="stylesheet" href="css/calendar/fullcalendar.min.css">
     <link rel="stylesheet" href="css/calendar/fullcalendar.print.min.css">
+    <!-- x-editor CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/editor/select2.css">
+    <link rel="stylesheet" href="css/editor/datetimepicker.css">
+    <link rel="stylesheet" href="css/editor/bootstrap-editable.css">
+    <link rel="stylesheet" href="css/editor/x-editor-style.css">
+    <!-- normalize CSS
+		============================================ -->
+    <link rel="stylesheet" href="css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="css/data-table/bootstrap-editable.css">
     <!-- style CSS
 		============================================ -->
     <link rel="stylesheet" href="style.css">
@@ -70,16 +72,19 @@
     <!-- modernizr JS
 		============================================ -->
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/newCss.css">
 </head>
 
 <body>
-<!--[if lt IE 8]><p class="browserupgrade">你正在使用<strong>旧</strong> 浏览器。请 <a href="https://www.google.cn/chrome/">更新你的浏览器</a>改善体验。</p><![endif]-->
-<!-- Start Left menu area -->
+<!--[if lt IE 8]>
+<p class="browserupgrade">你正在使用<strong>旧</strong> 浏览器。请 <a href="https://www.google.cn/chrome/">更新你的浏览器</a>改善体验。</p>
+<![endif]-->
+<!-- 左侧菜单区域 -->
 <div class="left-sidebar-pro">
     <nav id="sidebar" class="">
         <div class="sidebar-header">
-            <a href="index1.html"><img class="main-logo" src="img/logo/logo.png" alt=""/></a>
-            <strong><a href="index1.html"><img src="img/logo/logosn.png" alt=""/></a></strong>
+            <a href="#主页"><img class="main-logo" src="img/logo/logo.png" alt="首页"/></a>
+            <strong><a href="#主页"><img src="img/logo/logosn.png" alt="首页"/></a></strong>
         </div>
         <div class="left-custom-menu-adp-wrap comment-scrollbar">
             <nav class="sidebar-nav left-sidebar-menu-pro">
@@ -136,7 +141,8 @@
                     </li>
 
                     <li>
-                        <a title="迁出记录" href="a_all-courses.html"><span class="educate-icon educate-apps icon-wrap"></span>
+                        <a title="迁出记录" href="a_all-courses.html"><span
+                                class="educate-icon educate-apps icon-wrap"></span>
                             <span class="mini-click-non">迁出记录</span></a>
                     </li>
                     <li id="removable">
@@ -148,7 +154,6 @@
         </div>
     </nav>
 </div>
-<!-- End Left menu area -->
 <!-- Start Welcome area -->
 <div class="all-content-wrapper">
     <div class="container-fluid">
@@ -353,50 +358,183 @@
                         </div>
                         <div class="sparkline13-graph">
                             <div class="datatable-dashv1-list custom-datatable-overright">
+                                <!--左侧工具栏-->
                                 <div id="toolbar">
-                                    <select class="form-control dt-tb">
-                                        <option value="">Export Basic</option>
-                                        <option value="all">Export All</option>
-                                        <option value="selected">Export Selected</option>
+                                    <select class="form-control dt-tb" style="display: inline;width: auto">
+                                        <option value="">导出本页</option>
+                                        <option value="all">导出所有</option>
+                                        <option value="selected">导出已选择</option>
                                     </select>
+                                    <button id="btn_add" type="button" class="btn btn-default" data-target="#addba"
+                                            data-toggle="modal">
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                                    </button>
+                                    <!-- 新增模态框（Modal） -->
+                                    <div class="modal fade" id="addba" tabindex="-1" role="dialog"
+                                         aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                            aria-hidden="true">×
+                                                    </button>
+                                                    <h4 class="modal-title">新增</h4>
+                                                </div>
+                                                <form method="post" action="#">
+                                                    <div class="container-fluid">
+                                                        <div class="form-group-inner">
+                                                            <label>姓名</label>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="10字以内中文字符" name="name">
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                            <label>性别</label>
+                                                            <select class="form-control custom-select-value" name="sex">
+                                                                <option value="1">男</option>
+                                                                <option value="0">女</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                            <label>电话</label>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="11位电话号码" name="phone">
+                                                        </div>
+                                                        <div class="form-group-inner">
+                                                            <label>用户名</label>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="20位以内字符" name="uid">
+                                                        </div>
+                                                        <label>密码</label>
+                                                        <input type="password" class="form-control"
+                                                               placeholder="20位以内字符" name="pwd">
+                                                    </div>
+                                                    <br/>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">关闭
+                                                        </button>
+                                                        <button type="submit" class="btn btn-primary">提交更改</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <table id="table" data-toggle="table" data-pagination="true" data-search="true"
+                                <table id="table" data-toggle="table" data-pagination="true" data-search-time-out="1000"
+                                       data-search="true"
                                        data-show-columns="true" data-show-pagination-switch="true"
                                        data-show-refresh="true" data-key-events="true" data-show-toggle="true"
                                        data-resizable="true" data-cookie="true"
-                                       data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true"
-                                       data-toolbar="#toolbar">
+                                       data-cookie-id-table="saveId" data-show-export="true"
+                                       data-toolbar="#toolbar" data-search-on-enter-key="true">
                                     <thead>
                                     <tr>
-                                        <th data-field="state" data-checkbox="true"></th>
-                                        <th data-field="id">序号</th>
-                                        <th data-field="name" data-editable="true">姓名</th>
-                                        <th data-field="email" data-editable="true">性别</th>
-                                        <th data-field="phone" data-editable="true">电话</th>
-                                        <th data-field="price" data-editable="true">用户名</th>
-                                        <th data-field="action">操作</th>
+                                        <th data-checkbox="true"></th>
+                                        <th>编号</th>
+                                        <th>姓名</th>
+                                        <th>性别</th>
+                                        <th>电话</th>
+                                        <th>用户名</th>
+                                        <th>操作</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td>1</td>
-                                        <td>姓名1</td>
-                                        <td>男</td>
-                                        <td>18883333333</td>
-                                        <td>baimo</td>
-                                        <td class="datatable-ct"><i class="fa fa-check"></i>
-                                        </td>
-                                    </tr>
+                                    <tbody id="td1">
                                     <tr>
                                         <td></td>
                                         <td>2</td>
-                                        <td>姓名2</td>
+                                        <td>白墨</td>
                                         <td>男</td>
                                         <td>18888888888</td>
-                                        <td>vaimo</td>
-                                        <td class="datatable-ct"><i class="fa fa-check"></i>
+                                        <td>baimo</td>
+                                        <td class="datatable-ct">
+                                            <button id="btn_edit" type="button" class="btn btn-default"
+                                                    data-toggle="modal" data-target="#zpwdupdate">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+                                            </button>
+                                            <button id="btn_delete" type="button" class="btn btn-default"
+                                                    data-toggle="modal" data-target="#delmodal">
+                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+                                            </button>
                                         </td>
+                                        <!-- 修改模态框（Modal） -->
+                                        <div class="modal fade" id="zpwdupdate" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">修改</h4>
+                                                    </div>
+                                                    <br/>
+                                                    <form method="post" action="#">
+                                                        <div class="container-fluid">
+                                                            <div class="form-group-inner">
+                                                                <label>姓名</label>
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="10字以内中文字符" name="name">
+                                                            </div>
+                                                            <div class="form-group-inner">
+                                                                <label>性别</label>
+                                                                <select class="form-control custom-select-value"
+                                                                        name="sex">
+                                                                    <option value="1">男</option>
+                                                                    <option value="0">女</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="form-group-inner">
+                                                                <label>电话</label>
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="11位电话号码" name="phone">
+                                                            </div>
+                                                            <div class="form-group-inner">
+                                                                <label>用户名</label>
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="20位以内字符" name="uid">
+                                                            </div>
+                                                            <label>密码</label>
+                                                            <input type="password" class="form-control"
+                                                                   placeholder="20位以内字符" name="pwd">
+                                                        </div>
+                                                        <br/>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-default"
+                                                                    data-dismiss="modal">关闭
+                                                            </button>
+                                                            <button type="submit" class="btn btn-primary">提交更改
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- 删除模态框（Modal） -->
+                                        <div class="modal fade" id="delmodal" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-hidden="true">×
+                                                        </button>
+                                                        <h4 class="modal-title">友情提示</h4>
+                                                    </div>
+                                                    <br/>
+                                                    <div class="container-fluid">
+                                                        <h4 style="color: red">您确定要删除吗？删除后无法恢复！</h4>
+                                                        <br>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <a href="#" class="btn btn-danger"
+                                                           style="color: white">要你管！</a>
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">算了吧..
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -455,14 +593,14 @@
 <script src="js/metisMenu/metisMenu-active.js"></script>
 <!-- data table JS
     ============================================ -->
-<script src="js/data-table/bootstrap-table.js"></script>
-<script src="js/data-table/tableExport.js"></script>
-<script src="js/data-table/data-table-active.js"></script>
-<script src="js/data-table/bootstrap-table-editable.js"></script>
-<script src="js/data-table/bootstrap-editable.js"></script>
-<script src="js/data-table/bootstrap-table-resizable.js"></script>
-<script src="js/data-table/colResizable-1.5.source.js"></script>
-<script src="js/data-table/bootstrap-table-export.js"></script>
+<script src="js/data-table/bootstrap-table.js"></script><!--动态表格-->
+<script src="js/data-table/tableExport.js"></script><!--控制导出-->
+<script src="js/data-table/data-table-active.js"></script><!---->
+<script src="js/data-table/bootstrap-table-editable.js"></script><!--允许编辑表格-->
+<script src="js/data-table/bootstrap-editable.js"></script><!---->
+<script src="js/data-table/bootstrap-table-resizable.js"></script><!---->
+<script src="js/data-table/colResizable-1.5.source.js"></script><!---->
+<script src="js/data-table/bootstrap-table-export.js"></script><!---->
 <!--  editable JS
     ============================================ -->
 <script src="js/editable/jquery.mockjax.js"></script>
@@ -485,7 +623,6 @@
 <!-- main JS
     ============================================ -->
 <script src="js/main.js"></script>
-
 </body>
 
 </html>

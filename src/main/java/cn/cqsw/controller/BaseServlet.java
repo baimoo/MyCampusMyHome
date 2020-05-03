@@ -29,6 +29,7 @@ public class BaseServlet extends HttpServlet {
         String methodName = req.getParameter("method");
         //删除属性
         req.removeAttribute("logMsg");
+        req.removeAttribute("errorMsg");
         //执行方法
         Method method = null;
         try {

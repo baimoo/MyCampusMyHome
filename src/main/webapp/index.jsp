@@ -95,7 +95,7 @@
                     </li>
                     <c:if test="${level eq 0}">
                         <li>
-                            <a title="楼宇管理员管理" href="a_buildingList.html"><span
+                            <a title="楼宇管理员管理" href="/ba?method=selectBuildingAdmins"><span
                                     class="educate-icon educate-professor icon-wrap"></span><span
                                     class="mini-click-non">楼宇管理员管理</span></a>
                         </li>
@@ -265,7 +265,7 @@
                                     </li>
                                     <c:if test="${level eq 0}">
                                         <li>
-                                            <a title="楼宇管理员管理" href="a_buildingList.html"><span
+                                            <a title="楼宇管理员管理" href="/ba?method=selectBuildingAdmins"><span
                                                     class="educate-icon educate-professor icon-wrap"></span><span
                                                     class="mini-click-non">楼宇管理员管理</span></a>
                                         </li>

@@ -572,9 +572,10 @@
                                                                 </div>
                                                                 <div class="form-group-inner">
                                                                     <label>人数</label>
-                                                                    <input name="num" class="form-control touchspin1"
-                                                                           type="text" value="${room.num}"
-                                                                           style="height: 42px">
+                                                                    <!--<input name="num1" class="form-control touchspin1"-->
+                                                                    <input name="num" class="form-control"
+                                                                           type="text" value="${room.num}">
+                                                                    <!--style="height: 42px">-->
                                                                 </div>
                                                                 <div class="form-group-inner">
                                                                     <label>电话</label>

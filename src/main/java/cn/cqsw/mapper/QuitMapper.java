@@ -3,6 +3,8 @@ package cn.cqsw.mapper;
 import cn.cqsw.pojo.Quit;
 import org.apache.ibatis.annotations.Insert;
 
+import java.util.List;
+
 /**
  * ClassName: QuitMapper
  * Description:迁出表实体类接口
@@ -15,4 +17,7 @@ public interface QuitMapper {
     //新增迁出记录
     @Insert("insert into quit values(default,#{student.sid},#{date},#{quitRemark},#{buildingAdmin.baid})")
     int insertQuit(Quit quit);
+
+    //查询所有迁出记录
+    List<Quit> selectQuits();
 }

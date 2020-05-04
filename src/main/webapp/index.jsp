@@ -134,9 +134,9 @@
                         </li>
 
                         <li>
-                            <a title="学生迁出登记" href="a_mailbox.html"><span
+                            <a title="学生迁出管理" href="/quit?method=selectQuits"><span
                                     class="educate-icon educate-interface icon-wrap"></span> <span
-                                    class="mini-click-non">学生迁出登记</span></a>
+                                    class="mini-click-non">学生迁出管理</span></a>
                         </li>
 
                         <li>
@@ -305,9 +305,9 @@
                                         </li>
 
                                         <li>
-                                            <a title="学生迁出登记" href="a_mailbox.html"><span
+                                            <a title="学生迁出管理" href="/quit?method=selectQuits"><span
                                                     class="educate-icon educate-interface icon-wrap"></span> <span
-                                                    class="mini-click-non">学生迁出登记</span></a>
+                                                    class="mini-click-non">学生迁出管理</span></a>
                                         </li>
 
                                         <li>

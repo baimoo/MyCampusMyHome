@@ -26,13 +26,13 @@
         todayBtn: "linked",
         keyboardNavigation: false,
         forceParse: false,
-        autoclose: true
+        autoclose: true,
+        format: "yyyy-mm-dd"
     });
 
     $('#data_4 .input-group.date').datepicker({
         minViewMode: 1,
         keyboardNavigation: false,
-        forceParse: false,
         forceParse: false,
         autoclose: true,
         todayHighlight: true

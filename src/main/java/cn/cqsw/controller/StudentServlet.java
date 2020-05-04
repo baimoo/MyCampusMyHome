@@ -69,7 +69,7 @@ public class StudentServlet extends BaseServlet {
 //        int rid = new Integer(req.getParameter("rid"));
 //        Room room = new Room();
 //        room.setRid(rid);
-        Student student = new Student(sid, pwd, name, sex, cName, 0, null, null);
+        Student student = new Student(sid, pwd, name, sex, cName, 2, null, null);
         int flag = 0;
         try {
             flag = new StudentService().updateStudent(student);

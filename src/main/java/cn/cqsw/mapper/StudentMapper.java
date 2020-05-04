@@ -21,9 +21,13 @@ public interface StudentMapper {
     @Insert("insert into student values(#{sid},#{pwd},#{name},#{sex},#{cName},#{state},null)")
     int insertStudent(Student student);
 
-    //更新学生信息
-    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state} where sid=#{sid}")
+    //动态更新学生信息
+//    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state} where sid=#{sid}")
     int updateStudent(Student student);
+
+    //迁出时更新学生状态信息
+//    @Update("update student set state=#{state} where sid=#{sid}")
+//    int updateStudentState(Student student);
 
     //通过学号更新迁出状态
     @Update("update student set state=#{state} where sid=#{sid}")
@@ -34,6 +38,10 @@ public interface StudentMapper {
 
     //通过学号查询学生
     Student selectStudentBySid(String sid);
+
+    //通过学号查询学生
+    @Select("select * from student where sid=#{sid}")
+    Student selectStudentBySid2(String sid);
 
     //通过学号删除学生
     @Delete("delete from student where sid=#{sid}")

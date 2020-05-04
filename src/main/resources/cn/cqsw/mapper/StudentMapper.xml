@@ -36,4 +36,17 @@
     <select id="selectStudents" resultMap="r2">
         select * from student
     </select>
+    <!--动态更新语句-->
+    <update id="updateStudent">
+        update student
+        <trim prefix="set" suffixOverrides=",">
+            <if test="pwd!=null">pwd=#{pwd},</if>
+            <if test="name!=null">`name`=#{name},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="cName!=null">cName=#{cName},</if>
+            <if test="state!=null">state=#{state},</if>
+            <if test="room!=null">rid=#{room.rid},</if>
+        </trim>
+        where sid=#{sid}
+    </update>
 </mapper>

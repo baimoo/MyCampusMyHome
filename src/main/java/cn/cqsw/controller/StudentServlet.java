@@ -66,10 +66,10 @@ public class StudentServlet extends BaseServlet {
         String cName = req.getParameter("cName");
         String pwd = req.getParameter("pwd");
         int sex = new Integer(req.getParameter("sex"));
-        int rid = new Integer(req.getParameter("rid"));
-        Room room = new Room();
-        room.setRid(rid);
-        Student student = new Student(sid, pwd, name, sex, cName, 0, room, null);
+//        int rid = new Integer(req.getParameter("rid"));
+//        Room room = new Room();
+//        room.setRid(rid);
+        Student student = new Student(sid, pwd, name, sex, cName, 0, null, null);
         int flag = 0;
         try {
             flag = new StudentService().updateStudent(student);
@@ -93,10 +93,10 @@ public class StudentServlet extends BaseServlet {
         String cName = req.getParameter("cName");
         String pwd = req.getParameter("pwd");
         int sex = new Integer(req.getParameter("sex"));
-        int rid = new Integer(req.getParameter("rid"));
-        Room room = new Room();
-        room.setRid(rid);
-        Student student = new Student(sid, pwd, name, sex, cName, 0, room, null);
+//        int rid = new Integer(req.getParameter("rid"));
+//        Room room = new Room();
+//        room.setRid(rid);
+        Student student = new Student(sid, pwd, name, sex, cName, 2, null, null);
         int flag = 0;
         try {
             flag = new StudentService().insertStudent(student);
@@ -104,9 +104,9 @@ public class StudentServlet extends BaseServlet {
             e.printStackTrace();
         } finally {
             if (flag < 1) {
-                req.setAttribute("errorMsg", "更新失败！");
+                req.setAttribute("errorMsg", "添加失败！");
             } else {
-                req.setAttribute("errorMsg", "更新成功！");
+                req.setAttribute("errorMsg", "添加成功！");
             }
             selectStudents(req, resp);
         }

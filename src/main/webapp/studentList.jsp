@@ -477,48 +477,6 @@
                                                             <input type="password" class="form-control"
                                                                    placeholder="20位以内字符" name="pwd">
                                                         </div>
-                                                        <div class="form-group-inner">
-                                                            <label>寝室</label>
-                                                            <div class="row">
-                                                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                    <select id="s1add"
-                                                                            class="form-control custom-select-value"
-                                                                            name="bdid" onchange="change1()">
-                                                                        <option>--请选择楼宇--</option>
-                                                                        <c:forEach var="building" items="${buildings}">
-                                                                            <option value="${building.bdid}">${building.name}</option>
-                                                                        </c:forEach>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                    <select id="s2add"
-                                                                            class="form-control custom-select-value"
-                                                                            name="rid">
-                                                                        <option>请选择寝室</option>
-                                                                    </select>
-                                                                </div>
-                                                                <script>
-                                                                    function change1() {
-                                                                        var bdid = $("#s1add").val();
-                                                                        $("#s2add").empty();
-                                                                        $("#s2add").append($("<option>请选择寝室</option>"));
-                                                                        $.ajax({
-                                                                                url: "/room?method=selectRoomsByBdid",
-                                                                                data: {"bdid": bdid},
-                                                                                dataType: "json",
-                                                                                success: function (data) {
-                                                                                    var ps = eval(data);
-                                                                                    for (var i = 0; i < ps.length; i++) {
-                                                                                        var option = $("<option value='" + ps[i].rid + "'>" + ps[i].code + "</option>");
-                                                                                        $("#s2add").append(option);
-                                                                                    }
-                                                                                }
-                                                                            }
-                                                                        );
-                                                                    }
-                                                                </script>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <br/>
                                                     <div class="modal-footer">
@@ -546,7 +504,6 @@
                                         <th>姓名</th>
                                         <th>性别</th>
                                         <th>班级</th>
-                                        <th>寝室</th>
                                         <th>状态</th>
                                         <th>操作</th>
                                     </tr>
@@ -562,10 +519,10 @@
                                             <c:if test="${student.sex eq 1}">男</c:if>
                                         </td>
                                         <td>${student.cName}</td>
-                                        <td>${student.room.code}</td>
                                         <td>
                                             <c:if test="${student.state eq 0}">入住</c:if>
                                             <c:if test="${student.state eq 1}">迁出</c:if>
+                                            <c:if test="${student.state eq 2}">未入住</c:if>
                                         </td>
                                         <td class="datatable-ct">
                                             <button id="btn_edit" type="button" class="btn btn-default"
@@ -632,60 +589,6 @@
                                                                 <input type="password" class="form-control"
                                                                        placeholder="20位以内字符" name="pwd"
                                                                        value="${student.pwd}">
-                                                            </div>
-                                                            <div class="form-group-inner">
-                                                                <label>寝室</label>
-                                                                <div class="row">
-                                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                        <select
-                                                                                <c:if test="${student.state eq 1}">style="background-color: #EEEEEE;"
-                                                                                disabled="disabled"</c:if>
-                                                                                id="s1${student.sid}"
-                                                                                class="form-control custom-select-value"
-                                                                                name="bdid"
-                                                                                onchange="change${student.sid}()">
-                                                                            <option>--请选择楼宇--</option>
-                                                                            <c:forEach var="building"
-                                                                                       items="${buildings}">
-                                                                                <option value="${building.bdid}">${building.name}</option>
-                                                                            </c:forEach>
-                                                                        </select>
-                                                                        <!--选中包含值的选项-->
-                                                                        <script>
-                                                                            $("#s1${student.sid}").val("${student.room.building.bdid}")
-                                                                        </script>
-                                                                    </div>
-                                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                        <select
-                                                                                <c:if test="${student.state eq 1}">style="background-color: #EEEEEE;"
-                                                                                disabled="disabled"</c:if>
-                                                                                id="s2${student.sid}"
-                                                                                class="form-control custom-select-value"
-                                                                                name="rid">
-                                                                            <option value="${student.room.rid}">${student.room.code}</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <script>
-                                                                        function change${student.sid}() {
-                                                                            var bdid = $("#s1${student.sid}").val();
-                                                                            $("#s2${student.sid}").empty();
-                                                                            $("#s2${student.sid}").append($("<option>请选择寝室</option>"));
-                                                                            $.ajax({
-                                                                                    url: "/room?method=selectRoomsByBdid",
-                                                                                    data: {"bdid": bdid},
-                                                                                    dataType: "json",
-                                                                                    success: function (data) {
-                                                                                        var ps = eval(data);
-                                                                                        for (var i = 0; i < ps.length; i++) {
-                                                                                            var option = $("<option value='" + ps[i].rid + "'>" + ps[i].code + "</option>");
-                                                                                            $("#s2${student.sid}").append(option);
-                                                                                        }
-                                                                                    }
-                                                                                }
-                                                                            );
-                                                                        }
-                                                                    </script>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                         <br/>

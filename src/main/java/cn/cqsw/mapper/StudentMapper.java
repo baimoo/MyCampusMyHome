@@ -18,11 +18,11 @@ import java.util.List;
  */
 public interface StudentMapper {
     //新增学生信息
-    @Insert("insert into student values(#{sid},#{pwd},#{name},#{sex},#{cName},#{state},#{room.rid})")
+    @Insert("insert into student values(#{sid},#{pwd},#{name},#{sex},#{cName},#{state},null)")
     int insertStudent(Student student);
 
     //更新学生信息
-    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state},rid=#{room.rid} where sid=#{sid}")
+    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state} where sid=#{sid}")
     int updateStudent(Student student);
 
     //通过学号更新迁出状态

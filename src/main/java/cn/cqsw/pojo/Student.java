@@ -15,8 +15,8 @@ import java.util.List;
  * name	    varchar(20)	非空	    学生姓名
  * sex	    int	        非空	    "性别 0/1 女/男"
  * cName	varchar(20)	非空	    班级名
- * state	int	        非空	    "入住状态 0/1 入住/迁出"
- * rid	    int	        非空，外键	寝室id
+ * state	int	        非空	    "入住状态 0/1/2 入住/迁出/未入住"
+ * rid	    int	        外键	    寝室id
  */
 public class Student implements Serializable {
     private String sid;//学号

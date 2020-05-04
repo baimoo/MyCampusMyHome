@@ -105,7 +105,7 @@
                         </a>
                     </li>
                     <li>
-                        <a title="楼宇管理员管理" href="a_buildingList.html"><span
+                        <a title="楼宇管理员管理" href="a_buildingAdimnList.html"><span
                                 class="educate-icon educate-professor icon-wrap"></span><span class="mini-click-non">楼宇管理员管理</span></a>
                     </li>
                     <li>
@@ -255,7 +255,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a title="楼宇管理员管理" href="a_buildingList.html"><span
+                                        <a title="楼宇管理员管理" href="a_buildingAdimnList.html"><span
                                                 class="educate-icon educate-professor icon-wrap"></span><span
                                                 class="mini-click-non">楼宇管理员管理</span></a>
                                     </li>

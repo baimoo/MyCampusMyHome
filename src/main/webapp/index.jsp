@@ -106,7 +106,7 @@
                         </li>
                         <li>
 
-                            <a title="楼宇管理" href="a_all-courses.html"><span
+                            <a title="楼宇管理" href="/bd?method=selectBuildings"><span
                                     class="educate-icon educate-course icon-wrap"></span> <span
                                     class="mini-click-non">楼宇管理</span></a>
                         </li>
@@ -276,7 +276,7 @@
                                         </li>
                                         <li>
 
-                                            <a title="楼宇管理" href="a_all-courses.html"><span
+                                            <a title="楼宇管理" href="/bd?method=selectBuildings"><span
                                                     class="educate-icon educate-course icon-wrap"></span> <span
                                                     class="mini-click-non">楼宇管理</span></a>
                                         </li>

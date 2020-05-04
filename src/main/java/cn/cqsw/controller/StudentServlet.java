@@ -113,26 +113,4 @@ public class StudentServlet extends BaseServlet {
 
     }
 
-//    //新增楼宇管理员
-//    public void insertBuildingAdmin(HttpServletRequest req, HttpServletResponse resp) {
-//        String name = req.getParameter("name");
-//        String uid = req.getParameter("uid");
-//        String pwd = req.getParameter("pwd");
-//        int sex = new Integer(req.getParameter("sex"));
-//        String phone = req.getParameter("phone");
-//        BuildingAdmin buildingAdmin = new BuildingAdmin(0, name, uid, pwd, sex, phone, null);
-//        int flag = 0;
-//        try {
-//            flag = new BuildingAdminService().insertBuildingAdmin(buildingAdmin);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (flag < 1) {
-//                req.setAttribute("errorMsg", "添加失败！");
-//            } else {
-//                req.setAttribute("errorMsg", "添加成功！");
-//            }
-//        }
-//        selectBuildingAdmins(req, resp);
-//    }
 }

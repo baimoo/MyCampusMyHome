@@ -111,7 +111,7 @@
                                     class="mini-click-non">楼宇管理</span></a>
                         </li>
                         <li>
-                            <a title="宿舍管理" href="a_events.html"><span
+                            <a title="宿舍管理" href="/room?method=selectRooms"><span
                                     class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
                                     class="mini-click-non">宿舍管理</span></a>
                         </li>
@@ -281,7 +281,7 @@
                                                     class="mini-click-non">楼宇管理</span></a>
                                         </li>
                                         <li>
-                                            <a title="宿舍管理" href="a_events.html"><span
+                                            <a title="宿舍管理" href="/room?method=selectRooms"><span
                                                     class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
                                                     class="mini-click-non">宿舍管理</span></a>
                                         </li>

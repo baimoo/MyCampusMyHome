@@ -24,4 +24,42 @@ public class RoomService {
         }
         return roomMapper.selectRoomsByBdid(bdid);
     }
+
+    //查询所有寝室
+    public List<Room> selectRooms() {
+        if (roomMapper == null) {
+            roomMapper = BaseDao.getSqlSession().getMapper(RoomMapper.class);
+        }
+        return roomMapper.selectRooms();
+    }
+
+    //更新寝室
+    public int updateRoom(Room room) {
+        if (roomMapper == null) {
+            roomMapper = BaseDao.getSqlSession().getMapper(RoomMapper.class);
+        }
+        int i = roomMapper.updateRoom(room);
+        BaseDao.getSqlSession().commit();
+        return i;
+    }
+
+    //新增寝室
+    public int insertRoom(Room room) {
+        if (roomMapper == null) {
+            roomMapper = BaseDao.getSqlSession().getMapper(RoomMapper.class);
+        }
+        int i = roomMapper.insertRoom(room);
+        BaseDao.getSqlSession().commit();
+        return i;
+    }
+
+    //通过寝室rid删除寝室
+    public int deleteRoomByRid(int rid) {
+        if (roomMapper == null) {
+            roomMapper = BaseDao.getSqlSession().getMapper(RoomMapper.class);
+        }
+        int i = roomMapper.deleteRoomByRid(rid);
+        BaseDao.getSqlSession().commit();
+        return i;
+    }
 }

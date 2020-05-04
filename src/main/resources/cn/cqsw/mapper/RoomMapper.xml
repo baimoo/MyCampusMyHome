@@ -30,4 +30,7 @@
     <select id="selectRoomByRid1" resultMap="r2">
     select * from room where rid=#{rid};
     </select>
+    <select id="selectRooms" resultMap="r2">
+    select * from room;
+    </select>
 </mapper>

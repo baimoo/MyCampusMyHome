@@ -67,23 +67,31 @@ public class StudentServlet extends BaseServlet {
         String cName = req.getParameter("cName");
         String pwd = req.getParameter("pwd");
         int sex = new Integer(req.getParameter("sex"));
-//        int rid = new Integer(req.getParameter("rid"));
-//        Room room = new Room();
-//        room.setRid(rid);
-        Student student = new Student(sid, pwd, name, sex, cName, 2, null, null);
-        int flag = 0;
+        int state = new Integer(req.getParameter("state"));
+        Room room = null;
         try {
-            flag = new StudentService().updateStudent(student);
+            int rid = new Integer(req.getParameter("rid"));
+            room = new Room();
+            room.setRid(rid);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.err.println("未获取到寝室！");
         } finally {
-            if (flag < 1) {
-                req.setAttribute("errorMsg", "更新失败！");
-            } else {
-                req.setAttribute("errorMsg", "更新成功！");
+            Student student = new Student(sid, pwd, name, sex, cName, state, room, null);
+            int flag = 0;
+            try {
+                flag = new StudentService().updateStudent(student);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                if (flag < 1) {
+                    req.setAttribute("errorMsg", "更新失败！");
+                } else {
+                    req.setAttribute("errorMsg", "更新成功！");
+                }
+                selectStudents(req, resp);
             }
-            selectStudents(req, resp);
         }
+
 
     }
 

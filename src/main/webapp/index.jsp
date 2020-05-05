@@ -102,7 +102,7 @@
                         <li>
                             <a title="学生管理" href="/student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
-                                    class="mini-click-non">学生管理</span></a>
+                                    class="mini-click-non">&nbsp;学生管理</span></a>
                         </li>
                         <li>
 
@@ -120,14 +120,14 @@
                         <li>
                             <a title="学生管理" href="student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
-                                    class="mini-click-non">学生管理</span></a>
+                                    class="mini-click-non">&nbsp;学生管理</span></a>
                         </li>
                         <li>
                             <a title="学生入住登记" href="a_all-courses.html"><span
                                     class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">学生入住登记</span></a>
                         </li>
                         <li>
-                            <a title="学生寝室调换" href="a_all-courses.html"><span
+                            <a title="学生寝室调换" href="rc?method=selectRoomChanges"><span
                                     class="educate-icon educate-department icon-wrap"></span> <span
                                     class="mini-click-non">学生寝室调换</span></a>
 
@@ -272,7 +272,7 @@
                                         <li>
                                             <a title="学生管理" href="/student?method=selectStudents"><span
                                                     class="educate-icon educate-student icon-wrap"></span><span
-                                                    class="mini-click-non">学生管理</span></a>
+                                                    class="mini-click-non">&nbsp;学生管理</span></a>
                                         </li>
                                         <li>
 
@@ -290,7 +290,7 @@
                                         <li>
                                             <a title="学生管理" href="/student?method=selectStudents"><span
                                                     class="educate-icon educate-student icon-wrap"></span><span
-                                                    class="mini-click-non">学生管理</span></a>
+                                                    class="mini-click-non">&nbsp;学生管理</span></a>
                                         </li>
                                         <li>
                                             <a title="学生入住登记" href="a_all-courses.html"><span
@@ -298,7 +298,7 @@
                                                     class="mini-click-non">学生入住登记</span></a>
                                         </li>
                                         <li>
-                                            <a title="学生寝室调换" href="a_all-courses.html"><span
+                                            <a title="学生寝室调换" href="rc?method=selectRoomChanges"><span
                                                     class="educate-icon educate-department icon-wrap"></span> <span
                                                     class="mini-click-non">学生寝室调换</span></a>
 

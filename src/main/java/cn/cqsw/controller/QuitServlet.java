@@ -27,8 +27,7 @@ public class QuitServlet extends BaseServlet {
     //查询所有记录
     public void selectQuits(HttpServletRequest req, HttpServletResponse resp) {
         List<Quit> quits = new QuitService().selectQuits();
-        HttpSession session = req.getSession();
-        session.setAttribute("quits", quits);
+        req.setAttribute("quits", quits);
         try {
             req.getRequestDispatcher("/quitList.jsp").forward(req, resp);
         } catch (ServletException e) {

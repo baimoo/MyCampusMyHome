@@ -25,10 +25,6 @@ public interface StudentMapper {
 //    @Update("update student set pwd=#{pwd},name=#{name},sex=#{sex},cName=#{cName},state=#{state} where sid=#{sid}")
     int updateStudent(Student student);
 
-    //迁出时更新学生状态信息
-//    @Update("update student set state=#{state} where sid=#{sid}")
-//    int updateStudentState(Student student);
-
     //通过学号更新迁出状态
     @Update("update student set state=#{state} where sid=#{sid}")
     int updateStudentStateBySid(Student student);

@@ -1,12 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="ch">
 
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>学生管理 | 我的校园我的家</title>
+    <title>学生寝室调换 | 我的校园我的家</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -401,7 +401,7 @@
                                     <ul class="breadcome-menu">
                                         <li><a href="a_index.html">首页</a> <span class="bread-slash">/</span>
                                         </li>
-                                        <li><span class="bread-blod">学生管理</span>
+                                        <li><span class="bread-blod">学生寝室调换</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -420,7 +420,7 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>学生列表</h1>
+                                <h1>寝室调换记录</h1>
                             </div>
                         </div>
                         <div class="sparkline13-graph">
@@ -434,7 +434,7 @@
                                     </select>
                                     <button id="btn_add" type="button" class="btn btn-default" data-target="#addba"
                                             data-toggle="modal">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>调换登记
                                     </button>
                                     <!-- 新增模态框（Modal） -->
                                     <div class="modal fade" id="addba" tabindex="-1" role="dialog"
@@ -445,38 +445,74 @@
                                                     <button type="button" class="close" data-dismiss="modal"
                                                             aria-hidden="true">×
                                                     </button>
-                                                    <h4 class="modal-title">新增</h4>
+                                                    <h4 class="modal-title">调换登记</h4>
                                                 </div>
-                                                <form method="post" action="student">
-                                                    <input type="hidden" name="method" value="insertStudent">
-                                                    <input type="hidden" name="state" value="2">
+                                                <form action="rc" method="post">
                                                     <div class="container-fluid">
+                                                        <input type="hidden" name="method" value="insertRoomChange">
                                                         <div class="form-group-inner">
-                                                            <label>学号</label>
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="10字以内中文字符" name="sid">
+                                                            <label>请选择学生</label>
+                                                            <div class="row">
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                    <select
+                                                                            id="s1"
+                                                                            class="form-control custom-select-value"
+                                                                            onchange="change1()">
+                                                                        <option>请选择楼宇</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                    <select id="s2"
+                                                                            class="form-control custom-select-value"
+                                                                            onchange="change2()" name="oldrid">
+                                                                        <option>请选择寝室</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                                    <select id="s3"
+                                                                            class="form-control custom-select-value"
+                                                                            name="sid">
+                                                                        <option>请选择学生</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="form-group-inner">
-                                                            <label>姓名</label>
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="10字以内中文字符" name="name">
+                                                            <label>调换后寝室</label>
+                                                            <div class="row">
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <select
+                                                                            id="s4"
+                                                                            class="form-control custom-select-value"
+                                                                            onchange="change3()">
+                                                                        <option>请选择楼宇</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                                                    <select id="s5"
+                                                                            class="form-control custom-select-value"
+                                                                            name="nowrid">
+                                                                        <option>请选择寝室</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group-inner">
-                                                            <label>性别</label>
-                                                            <select class="form-control custom-select-value" name="sex">
-                                                                <option value="1">男</option>
-                                                                <option value="0">女</option>
-                                                            </select>
+                                                        <div class="form-group-inner data-custon-pick data_1">
+                                                            <label><b>调换时间</b></label>
+                                                            <div class="input-group date">
+                                                            <span class="input-group-addon"><i
+                                                                    class="fa fa-calendar"></i></span>
+                                                                <input name="date" type="text" class="form-control"
+                                                                       value="${time}">
+                                                            </div>
                                                         </div>
-                                                        <div class="form-group-inner">
-                                                            <label>班级</label>
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="20位以内字符" name="cName">
-                                                        </div>
-                                                        <div class="form-group-inner">
-                                                            <label>密码</label>
-                                                            <input type="password" class="form-control"
-                                                                   placeholder="20位以内字符" name="pwd">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <label>备注</label>
+                                                            </div>
+                                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                                <textarea rows="10" name="remark"
+                                                                          style="width: 100%;"></textarea></div>
                                                         </div>
                                                     </div>
                                                     <br/>
@@ -501,274 +537,32 @@
                                     <thead>
                                     <tr>
                                         <th data-checkbox="true"></th>
-                                        <th>学号</th>
+                                        <th>日期</th>
                                         <th>姓名</th>
+                                        <th>学号</th>
                                         <th>性别</th>
-                                        <th>班级</th>
-                                        <th>状态</th>
-                                        <th>操作</th>
+                                        <th>原寝室</th>
+                                        <th>调换寝室</th>
+                                        <th>备注</th>
+                                        <th>登记人</th>
                                     </tr>
                                     </thead>
                                     <tbody id="td1">
-                                    <c:forEach items="${students}" var="student">
-                                    <tr>
-                                        <td></td>
-                                        <td>${student.sid}</td>
-                                        <td>${student.name}</td>
-                                        <td>
-                                            <c:if test="${student.sex eq 0}">女</c:if>
-                                            <c:if test="${student.sex eq 1}">男</c:if>
-                                        </td>
-                                        <td>${student.cName}</td>
-                                        <td>
-                                            <c:if test="${student.state eq 0}">入住</c:if>
-                                            <c:if test="${student.state eq 1}">迁出</c:if>
-                                            <c:if test="${student.state eq 2}">未入住</c:if>
-                                        </td>
-                                        <td class="datatable-ct">
-                                            <button id="btn_edit" type="button" class="btn btn-default"
-                                                    data-toggle="modal" data-target="#upmodal${student.sid}">
-                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                                            </button>
-                                            <button id="btn_delete" type="button" class="btn btn-default"
-                                                    data-toggle="modal"
-                                                    data-target="#delmodal${student.sid}">
-                                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                                            </button>
-                                            <c:if test="${(student.state eq 2) and (level eq 1)}">
-                                                <button id="btn_reg" type="button" class="btn btn-success"
-                                                        data-toggle="modal"
-                                                        data-target="#regmodal${student.sid}"
-                                                        onclick="b${student.sid}()">
-                                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>入住登记
-                                                </button>
-                                                <!-- 入住登记模态框（Modal） -->
-                                                <div class="modal fade" id="regmodal${student.sid}" tabindex="-1"
-                                                     role="dialog"
-                                                     aria-labelledby="myModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">×
-                                                                </button>
-                                                                <h4 class="modal-title">入住登记</h4>
-                                                            </div>
-                                                            <br/>
-                                                            <form method="post" action="student">
-                                                                <input type="hidden" name="method"
-                                                                       value="updateStudent">
-                                                                <div class="container-fluid">
-                                                                    <div class="form-group-inner">
-                                                                        <label>学号</label>
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="10字以内字符" name="sid"
-                                                                               value="${student.sid}"
-                                                                               readonly="readonly">
-                                                                    </div>
-                                                                    <div class="form-group-inner">
-                                                                        <label>姓名</label>
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="10字以内中文字符" name="name"
-                                                                               value="${student.name}"
-                                                                               readonly="readonly">
-                                                                    </div>
-                                                                    <div class="form-group-inner">
-                                                                        <label>性别</label>
-                                                                        <select id="disabledSelect"
-                                                                                class="form-control custom-select-value"
-                                                                                style="pointer-events: none;background-color: #EEEEEE;"
-                                                                                name="sex">
-                                                                            <option value="0"
-                                                                                    <c:if test="${student.sex eq 0}">selected="selected"</c:if>>
-                                                                                女
-                                                                            </option>
-                                                                            <option value="1"
-                                                                                    <c:if test="${student.sex eq 1}">selected="selected"</c:if>>
-                                                                                男
-                                                                            </option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="form-group-inner">
-                                                                        <label>班级</label>
-                                                                        <input type="text" class="form-control"
-                                                                               placeholder="20位以内字符" name="cName"
-                                                                               value="${student.cName}"
-                                                                               readonly="readonly">
-                                                                    </div>
-                                                                    <div class="form-group-inner">
-                                                                        <label>入住寝室</label>
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                <select
-                                                                                        id="s1${student.sid}"
-                                                                                        class="form-control custom-select-value"
-                                                                                        onchange="c1${student.sid}()">
-                                                                                    <option>请选择楼宇</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                                                                <select id="s2${student.sid}"
-                                                                                        class="form-control custom-select-value"
-                                                                                        name="rid">
-                                                                                    <option>请选择寝室</option>
-                                                                                </select>
-                                                                            </div>
-                                                                            <input type="hidden" name="state" value="0">
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <br/>
-                                                                <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-default"
-                                                                            data-dismiss="modal">关闭
-                                                                    </button>
-                                                                    <button type="submit" class="btn btn-primary">确定入住
-                                                                    </button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <script>
-                                                    function b${student.sid}() {
-                                                        //初始化楼宇下拉框
-                                                        $.ajax({
-                                                                url: "/bd?method=selectOneBuildings",
-                                                                data: {},
-                                                                dataType: "json",
-                                                                success: function (data) {
-                                                                    var ps = eval(data);
-                                                                    for (var i = 0; i < ps.length; i++) {
-                                                                        var option = $("<option value='" + ps[i].bdid + "'>" + ps[i].name + "</option>");
-                                                                        $("#s1${student.sid}").append(option);
-                                                                    }
-                                                                }
-                                                            }
-                                                        );
-                                                    }
-
-                                                    //楼宇-寝室下拉框联动
-                                                    function c1${student.sid}() {
-                                                        var bdid = $("#s1${student.sid}").val();
-                                                        $("#s2${student.sid}").empty();
-                                                        $("#s2${student.sid}").append($("<option>请选择寝室</option>"));
-                                                        $.ajax({
-                                                                url: "/room?method=selectRoomsByBdid",
-                                                                data: {"bdid": bdid},
-                                                                dataType: "json",
-                                                                success: function (data) {
-                                                                    var ps = eval(data);
-                                                                    for (var i = 0; i < ps.length; i++) {
-                                                                        var option = $("<option value='" + ps[i].rid + "'>" + ps[i].code + "</option>");
-                                                                        $("#s2${student.sid}").append(option);
-                                                                    }
-                                                                }
-                                                            }
-                                                        );
-                                                    }
-                                                </script>
-                                            </c:if>
-                                        </td>
-                                        <!-- 修改模态框（Modal） -->
-                                        <div class="modal fade" id="upmodal${student.sid}" tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-hidden="true">×
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">修改</h4>
-                                                    </div>
-                                                    <br/>
-                                                    <form method="post" action="student">
-                                                        <input type="hidden" name="method" value="updateStudent">
-                                                        <div class="container-fluid">
-                                                            <div class="form-group-inner">
-                                                                <label>学号</label>
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="10字以内字符" name="sid"
-                                                                       value="${student.sid}" readonly="readonly">
-                                                            </div>
-                                                            <div class="form-group-inner">
-                                                                <label>姓名</label>
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="10字以内中文字符" name="name"
-                                                                       value="${student.name}">
-                                                            </div>
-                                                            <div class="form-group-inner">
-                                                                <label>性别</label>
-                                                                <select class="form-control custom-select-value"
-                                                                        name="sex">
-                                                                    <option value="0"
-                                                                            <c:if test="${student.sex eq 0}">selected="selected"</c:if>>
-                                                                        女
-                                                                    </option>
-                                                                    <option value="1"
-                                                                            <c:if test="${student.sex eq 1}">selected="selected"</c:if>>
-                                                                        男
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="form-group-inner">
-                                                                <label>班级</label>
-                                                                <input type="text" class="form-control"
-                                                                       placeholder="20位以内字符" name="cName"
-                                                                       value="${student.cName}">
-                                                            </div>
-
-                                                            <div class="form-group-inner">
-                                                                <label>密码</label>
-                                                                <input type="password" class="form-control"
-                                                                       placeholder="20位以内字符" name="pwd"
-                                                                       value="${student.pwd}">
-                                                            </div>
-                                                        </div>
-                                                        <br/>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                    data-dismiss="modal">关闭
-                                                            </button>
-                                                            <button type="submit" class="btn btn-primary">提交
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- 删除模态框（Modal） -->
-                                        <div class="modal fade" id="delmodal${student.sid}" tabindex="-1"
-                                             role="dialog"
-                                             aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                                aria-hidden="true">×
-                                                        </button>
-                                                        <h4 class="modal-title">友情提示</h4>
-                                                    </div>
-                                                    <br/>
-                                                    <div class="container-fluid">
-                                                        <h4>您确定要删除<span
-                                                                style="color: red">${student.name}</span>吗？删除后无法恢复！
-                                                        </h4>
-                                                        <br>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <a href="/student?method=delBuildingAdminByBaid&sid=${student.sid}"
-                                                           class="btn btn-danger"
-                                                           style="color: white">要你管！</a>
-                                                        <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">算了吧..
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </tr>
+                                    <c:forEach items="${roomChanges}" var="roomChange">
+                                        <tr>
+                                            <td></td>
+                                            <td>${roomChange.date}</td>
+                                            <td>${roomChange.student.name}</td>
+                                            <td>${roomChange.student.sid}</td>
+                                            <td>
+                                                <c:if test="${roomChange.student.sex eq 0}">女</c:if>
+                                                <c:if test="${roomChange.student.sex eq 1}">男</c:if>
+                                            </td>
+                                            <td>${roomChange.oldRoom.code}</td>
+                                            <td>${roomChange.nowRoom.code}</td>
+                                            <td>${roomChange.remark}</td>
+                                            <td>${roomChange.buildingAdmin.name}</td>
+                                        </tr>
                                     </c:forEach>
                                     </tbody>
                                 </table>
@@ -792,17 +586,109 @@
         </div>
     </div>
 </div>
+
+
 <script>
     $(function () {
         //提示信息
         <c:if test="${not empty errorMsg}">
         alert("${errorMsg}");
         </c:if>
-
-
+        //初始化日期主键
+        $('.data_1 .input-group.date').datepicker({
+            startView: 2,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            format: "yyyy-mm-dd",
+            initialDate: new Date(),
+            endDate: new Date()
+        });
     });
+    //初始化楼宇下拉框
+    $.ajax({
+            url: "/bd?method=selectOneBuildings",
+            data: {},
+            dataType: "json",
+            success: function (data) {
+                var ps = eval(data);
+                for (var i = 0; i < ps.length; i++) {
+                    var option = $("<option value='" + ps[i].bdid + "'>" + ps[i].name + "</option>");
+                    $("#s1").append(option);
+                }
+                for (var i = 0; i < ps.length; i++) {
+                    var option = $("<option value='" + ps[i].bdid + "'>" + ps[i].name + "</option>");
+                    $("#s4").append(option);
+                }
+            }
+        }
+    );
 
+    //楼宇-寝室下拉框联动
+    function change1() {
+        var bdid = $("#s1").val();
+        $("#s2").empty();
+        $("#s2").append($("<option>请选择寝室</option>"));
+        $("#s3").empty();
+        $("#s3").append($("<option>请选择学生</option>"));
+        $.ajax({
+                url: "/room?method=selectRoomsByBdid",
+                data: {"bdid": bdid},
+                dataType: "json",
+                success: function (data) {
+                    var ps = eval(data);
+                    for (var i = 0; i < ps.length; i++) {
+                        var option = $("<option value='" + ps[i].rid + "'>" + ps[i].code + "</option>");
+                        $("#s2").append(option);
+                    }
+                }
+            }
+        );
+    }
+
+    //楼宇-寝室下拉框联动
+    function change3() {
+        var bdid = $("#s4").val();
+        $("#s5").empty();
+        $("#s5").append($("<option>请选择寝室</option>"));
+        $.ajax({
+                url: "/room?method=selectRoomsByBdid",
+                data: {"bdid": bdid},
+                dataType: "json",
+                success: function (data) {
+                    var ps = eval(data);
+                    for (var i = 0; i < ps.length; i++) {
+                        var option = $("<option value='" + ps[i].rid + "'>" + ps[i].code + "</option>");
+                        $("#s5").append(option);
+                    }
+                }
+            }
+        );
+    }
+
+    //寝室-学生下拉框联动
+    function change2() {
+        var rid = $("#s2").val();
+        $("#s3").empty();
+        $("#s3").append($("<option>请选择学生</option>"));
+        $.ajax({
+                url: "/student?method=selectOneBuildings",
+                data: {"rid": rid},
+                dataType: "json",
+                success: function (data) {
+                    var ps = eval(data);
+                    for (var i = 0; i < ps.length; i++) {
+                        var option = $("<option value='" + ps[i].sid + "'>" + ps[i].name + "</option>");
+                        $("#s3").append(option);
+                    }
+                }
+            }
+        );
+    }
 </script>
-
+<!-- datapicker JS
+    ============================================ -->
+<script src="js/datapicker/bootstrap-datepicker.js"></script>
 </body>
 </html>

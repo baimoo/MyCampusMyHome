@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cqsw.mapper.RoomChangeMapper">
+    <resultMap id="r1" type="cn.cqsw.pojo.RoomChange">
+        <id property="rcid" column="rcid"></id>
+        <result column="date" property="date"></result>
+        <result column="remark" property="remark"></result>
+        <association property="student" column="sid"
+                     select="cn.cqsw.mapper.StudentMapper.selectStudentBySid2"></association>
+        <association property="oldRoom" column="oldrid"
+                     select="cn.cqsw.mapper.RoomMapper.selectRoomByRid"></association>
+        <association property="nowRoom" column="nowrid"
+                     select="cn.cqsw.mapper.RoomMapper.selectRoomByRid"></association>
+        <association property="buildingAdmin" column="baid"
+                     select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
+    </resultMap>
+    <!--查询所有调换记录-->
+    <select id="selectRoomChanges" resultMap="r1">
+        select * from RoomChange
+    </select>
+</mapper>

@@ -526,7 +526,7 @@
                                 <!--面包屑导航-->
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <ul class="breadcome-menu">
-                                        <li><a href="/index.jsp">首页</a>
+                                        <li><a href="index.jsp">首页</a>
                                         </li>
                                     </ul>
                                 </div>

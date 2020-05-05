@@ -2,8 +2,10 @@ package cn.cqsw.controller;
 
 import cn.cqsw.pojo.Building;
 import cn.cqsw.pojo.BuildingAdmin;
+import cn.cqsw.pojo.Room;
 import cn.cqsw.service.BuildingAdminService;
 import cn.cqsw.service.BuildingService;
+import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -80,7 +82,6 @@ public class BuildingServlet extends BaseServlet {
             }
             selectBuildings(req, resp);
         }
-
     }
 
     //新增楼宇
@@ -104,8 +105,18 @@ public class BuildingServlet extends BaseServlet {
             }
             selectBuildings(req, resp);
         }
-
     }
 
+    //查询楼宇（只要楼宇号）用于ajax
+    public void selectOneBuildings(HttpServletRequest req, HttpServletResponse resp) {
+        List<Building> buildings = new BuildingService().selectOneBuildings();
+        String s = JSON.toJSONString(buildings);
+        resp.setContentType("text/html;charset=UTF-8");
+        try {
+            resp.getWriter().write(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 }

@@ -25,6 +25,14 @@ public class BuildingService {
         return buildingMapper.selectBuildings();
     }
 
+    //单表查询所有楼宇
+    public List<Building> selectOneBuildings() {
+        if (buildingMapper == null) {
+            buildingMapper = BaseDao.getSqlSession().getMapper(BuildingMapper.class);
+        }
+        return buildingMapper.selectOneBuildings();
+    }
+
     //删除楼宇
     public int deleteBuildingByBdid(int bdid) {
         if (buildingMapper == null) {

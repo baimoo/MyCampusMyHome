@@ -8,11 +8,14 @@
         <result property="date" column="date"></result>
         <result property="remark" column="remark"></result>
         <association property="student" column="sid"
-                     select="cn.cqsw.mapper.StudentMapper.selectStudentBySid"></association>
+                     select="cn.cqsw.mapper.StudentMapper.selectStudentBySid3"></association>
         <association property="buildingAdmin" column="baid"
                      select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
     </resultMap>
-    <!--<select id="selectLatesBySid" resultMap="r1">-->
-    <!--select * from late where sid=#{sid}-->
-    <!--</select>-->
+    <select id="selectLatesBySid2" resultMap="r1">
+    select * from late where sid=#{sid}
+    </select>
+    <select id="selectLates" resultMap="r1">
+    select * from late
+    </select>
 </mapper>

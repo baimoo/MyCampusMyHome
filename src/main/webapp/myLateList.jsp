@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>学生迁出管理 | 我的校园我的家</title>
+    <title>我的缺寝记录 | 我的校园我的家</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- favicon
@@ -401,7 +401,7 @@
                                     <ul class="breadcome-menu">
                                         <li><a href="a_index.html">首页</a> <span class="bread-slash">/</span>
                                         </li>
-                                        <li><span class="bread-blod">学生迁出管理</span>
+                                        <li><span class="bread-blod">我的缺寝记录</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -420,7 +420,7 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>已迁出学生</h1>
+                                <h1>我的缺寝记录</h1>
                             </div>
                         </div>
                         <div class="sparkline13-graph">
@@ -432,95 +432,6 @@
                                         <option value="all">导出所有</option>
                                         <option value="selected">导出已选择</option>
                                     </select>
-                                    <button id="btn_add" type="button" class="btn btn-default" data-target="#addba"
-                                            data-toggle="modal">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>迁出登记
-                                    </button>
-                                    <!-- 新增模态框（Modal） -->
-                                    <div class="modal fade" id="addba" tabindex="-1" role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">×
-                                                    </button>
-                                                    <h4 class="modal-title">迁出登记</h4>
-                                                </div>
-                                                <div class="container-fluid">
-                                                    <div class="form-group-inner">
-                                                        <label>学号</label>
-                                                        <input type="text" class="form-control"
-                                                               placeholder="请务必输入正确" id="sid1">
-                                                    </div>
-                                                    <div class="form-group-inner data-custon-pick data_1">
-                                                        <label><b>迁出时间</b></label>
-                                                        <div class="input-group date">
-                                                            <span class="input-group-addon"><i
-                                                                    class="fa fa-calendar"></i></span>
-                                                            <input id="date1" type="text" class="form-control"
-                                                                   value="${time}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <label>备注</label>
-                                                        </div>
-                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <textarea rows="10" id="remark1"
-                                                                          style="width: 100%;"></textarea></div>
-                                                    </div>
-                                                </div>
-                                                <br/>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default"
-                                                            data-dismiss="modal">关闭
-                                                    </button>
-                                                    <a onclick="submit1()" class="btn btn-primary"
-                                                       data-target="#altmodal"
-                                                       data-toggle="modal">提交</a>
-                                                </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 警告模态框（Modal） -->
-                                    <div class="modal fade" id="altmodal" tabindex="-1"
-                                         role="dialog"
-                                         aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-hidden="true">×
-                                                    </button>
-                                                    <h4 class="modal-title">友情提示</h4>
-                                                </div>
-                                                <br/>
-                                                <div class="container-fluid">
-                                                    <h4>此功能只适用于毕业的学生迁出，<span
-                                                            style="color: red">迁出后将不可恢复！</span>确定要迁出吗？
-                                                    </h4>
-                                                    <br>
-                                                </div>
-                                                <form action="quit" method="post">
-                                                    <div class="modal-footer">
-                                                        <input type="hidden" name="method" value="insertQuit">
-                                                        <input type="hidden" id="remark2" name="remark">
-                                                        <input type="hidden" id="sid2" name="sid">
-                                                        <input type="hidden" id="date2" name="time">
-                                                        <button type="submit"
-                                                                class="btn btn-danger"
-                                                                style="color: white">确定
-                                                        </button>
-                                                        <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">取消
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <table id="table" data-toggle="table" data-pagination="true" data-search-time-out="1000"
                                        data-search="true"
@@ -532,29 +443,29 @@
                                     <thead>
                                     <tr>
                                         <th data-checkbox="true"></th>
-                                        <th>日期</th>
+                                        <th>寝室号</th>
                                         <th>姓名</th>
-                                        <th>学号</th>
                                         <th>性别</th>
                                         <th>班级</th>
+                                        <th>日期</th>
                                         <th>备注</th>
                                         <th>登记人</th>
                                     </tr>
                                     </thead>
                                     <tbody id="td1">
-                                    <c:forEach items="${quits}" var="quit">
+                                    <c:forEach items="${lates}" var="late">
                                         <tr>
                                             <td></td>
-                                            <td>${quit.date}</td>
-                                            <td>${quit.student.name}</td>
-                                            <td>${quit.student.sid}</td>
+                                            <td>${late.student.room.code}</td>
+                                            <td>${late.student.name}</td>
                                             <td>
-                                                <c:if test="${quit.student.sex eq 0}">女</c:if>
-                                                <c:if test="${quit.student.sex eq 1}">男</c:if>
+                                                <c:if test="${late.student.sex eq 0}">女</c:if>
+                                                <c:if test="${late.student.sex eq 1}">男</c:if>
                                             </td>
-                                            <td>${quit.student.cName}</td>
-                                            <td>${quit.quitRemark}</td>
-                                            <td>${quit.buildingAdmin.name}</td>
+                                            <td>${late.student.cName}</td>
+                                            <td>${late.date}</td>
+                                            <td>${late.remark}</td>
+                                            <td>${late.buildingAdmin.name}</td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -583,32 +494,13 @@
 
 <script>
     $(function () {
-        $('.data_1 .input-group.date').datepicker({
-            startView: 2,
-            todayBtn: "linked",
-            keyboardNavigation: false,
-            forceParse: false,
-            autoclose: true,
-            format: "yyyy-mm-dd",
-            initialDate: new Date(),
-            endDate: new Date()
-        });
-    });
-
-    function submit1() {
-        $("#sid2").val($("#sid1").val());
-        $("#date2").val($("#date1").val());
-        $("#remark2").val($("#remark1").val());
-    }
+        //提示信息
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+    </c:if>
 </script>
 <!-- datapicker JS
     ============================================ -->
 <script src="js/datapicker/bootstrap-datepicker.js"></script>
 </body>
-<!--提示信息-->
-<c:if test="${not empty errorMsg}">
-    <script type="text/javascript">
-        alert("${errorMsg}")
-    </script>
-</c:if>
 </html>

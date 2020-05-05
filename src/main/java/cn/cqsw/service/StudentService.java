@@ -33,6 +33,14 @@ public class StudentService {
         return studentMapper.selectStudents();
     }
 
+    //通过寝室rid查询已入住学生
+    public List<Student> selectStudentsByRid2(int rid) {
+        if (studentMapper == null) {
+            studentMapper = BaseDao.getSqlSession().getMapper(StudentMapper.class);
+        }
+        return studentMapper.selectStudentsByRid2(rid);
+    }
+
     //通过学号删除学生
     public int deleteStudentBySid(String sid) {
         if (studentMapper == null) {

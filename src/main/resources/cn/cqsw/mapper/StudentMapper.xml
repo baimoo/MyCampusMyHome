@@ -36,6 +36,9 @@
     <select id="selectStudents" resultMap="r2">
         select * from student
     </select>
+    <select id="selectStudentBySid3" resultMap="r2">
+        select * from student where sid=#{sid}
+    </select>
     <!--动态更新语句-->
     <update id="updateStudent">
         update student

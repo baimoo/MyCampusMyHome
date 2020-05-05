@@ -22,4 +22,10 @@ public interface LateMapper {
     //通过学生学号sid查询缺寝记录
     @Select("select * from late where sid=#{sid}")
     List<Late> selectLatesBySid(String sid);
+
+    //通过学生学号sid查询缺寝记录
+    List<Late> selectLatesBySid2(String sid);
+
+    //查询所有缺寝记录
+    List<Late> selectLates();
 }

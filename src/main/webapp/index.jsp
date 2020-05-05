@@ -118,7 +118,7 @@
                     </c:if>
                     <c:if test="${level eq 1}">
                         <li>
-                            <a title="学生管理" href="/student?method=selectStudents"><span
+                            <a title="学生管理" href="student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
                                     class="mini-click-non">学生管理</span></a>
                         </li>
@@ -134,13 +134,13 @@
                         </li>
 
                         <li>
-                            <a title="学生迁出管理" href="/quit?method=selectQuits"><span
+                            <a title="学生迁出管理" href="quit?method=selectQuits"><span
                                     class="educate-icon educate-interface icon-wrap"></span> <span
                                     class="mini-click-non">学生迁出管理</span></a>
                         </li>
 
                         <li>
-                            <a title="学生缺寝记录" href="a_mailbox.html"><span
+                            <a title="学生缺寝记录" href="late?method=selectLates"><span
                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                     class="mini-click-non">学生缺寝记录</span></a>
                         </li>
@@ -152,13 +152,13 @@
                     </c:if>
                     <c:if test="${level eq 2}">
                         <li>
-                            <a title="我的缺寝记录" href="a_mailbox.html"><span
+                            <a title="我的缺寝记录" href="late?method=selectLates"><span
                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                     class="mini-click-non">我的缺寝记录</span></a>
                         </li>
                     </c:if>
                     <li id="removable">
-                        <a title="退出系统" href="/system?method=exit" onclick="return confirm('提示：确认退出登录？')"><span
+                        <a title="退出系统" href="system?method=exit" onclick="return confirm('提示：确认退出登录？')"><span
                                 class="educate-icon educate-pages icon-wrap"></span> <span
                                 class="mini-click-non">退出系统</span></a>
                     </li>
@@ -311,7 +311,7 @@
                                         </li>
 
                                         <li>
-                                            <a title="学生缺寝记录" href="a_mailbox.html"><span
+                                            <a title="学生缺寝记录" href="late?method=selectLates"><span
                                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                                     class="mini-click-non">学生缺寝记录</span></a>
                                         </li>
@@ -323,13 +323,13 @@
                                     </c:if>
                                     <c:if test="${level eq 2}">
                                         <li>
-                                            <a title="我的缺寝记录" href="a_mailbox.html"><span
+                                            <a title="我的缺寝记录" href="late?method=selectLates"><span
                                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                                     class="mini-click-non">我的缺寝记录</span></a>
                                         </li>
                                     </c:if>
                                     <li id="removable">
-                                        <a title="退出系统" href="/system?method=exit"
+                                        <a title="退出系统" href="system?method=exit"
                                            onclick="return confirm('提示：确认退出登录？')"><span
                                                 class="educate-icon educate-pages icon-wrap"></span> <span
                                                 class="mini-click-non">退出系统</span></a>

@@ -31,6 +31,10 @@ public interface BuildingMapper {
     //查询所有楼宇
     List<Building> selectBuildings();
 
+    //查询所有楼宇
+    @Select("select * from Building")
+    List<Building> selectOneBuildings();
+
     //通过楼宇编号bdid查询楼宇
     @Select("select * from Building where bdid=#{bdid}")
     Building selectBuildingByBdid(int bdid);

@@ -50,6 +50,13 @@ public interface StudentMapper {
     //通过寝室rid查询学生
     List<Student> selectStudentsByRid(int rid);
 
+    //通过寝室rid查询已入住学生
+    @Select("select * from student where rid=#{rid} and state=0")
+    List<Student> selectStudentsByRid2(int rid);
+
     //查询所有学生包括寝室号
     List<Student> selectStudents();
+
+    //通过学号查询学生包括寝室号
+    List<Student> selectStudentBySid3(String sid);
 }

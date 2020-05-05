@@ -5,6 +5,7 @@ import cn.cqsw.pojo.Room;
 import cn.cqsw.pojo.Student;
 import cn.cqsw.service.BuildingService;
 import cn.cqsw.service.StudentService;
+import com.alibaba.fastjson.JSON;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -110,7 +111,19 @@ public class StudentServlet extends BaseServlet {
             }
             selectStudents(req, resp);
         }
+    }
 
+    //通过寝室rid查询学生（只要学生，单表查询）用于ajax
+    public void selectOneBuildings(HttpServletRequest req, HttpServletResponse resp) {
+        int rid = new Integer(req.getParameter("rid"));
+        List<Student> students = new StudentService().selectStudentsByRid2(rid);
+        String s = JSON.toJSONString(students);
+        resp.setContentType("text/html;charset=UTF-8");
+        try {
+            resp.getWriter().write(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

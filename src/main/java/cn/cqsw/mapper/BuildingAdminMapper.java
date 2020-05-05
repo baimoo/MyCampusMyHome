@@ -17,12 +17,12 @@ import java.util.List;
  * @since JDK 1.8
  */
 public interface BuildingAdminMapper {
-    //添加楼宇
+    //添加楼宇管理员
     @Insert("insert into buildingAdmin values(default,#{name},#{uid},#{pwd},#{sex},#{phone})")
     int insertBuildingAdmin(BuildingAdmin buildingAdmin);
 
-    //更新楼宇
-    @Update("update buildingAdmin set name=#{name},uid=#{uid},pwd=#{pwd},sex=#{sex},phone=#{phone} where baid=#{baid}")
+    //更新楼宇管理员
+//    @Update("update buildingAdmin set name=#{name},uid=#{uid},pwd=#{pwd},sex=#{sex},phone=#{phone} where baid=#{baid}")
     int updateBuildingAdmin(BuildingAdmin buildingAdmin);
 
     //通过帐号密码查询楼宇管理员

@@ -17,7 +17,7 @@ import java.util.List;
 public class BuildingAdminService {
     private BuildingAdminMapper buildingAdminMapper;
 
-    //添加楼宇
+    //添加楼宇管理员
     public int insertBuildingAdmin(BuildingAdmin buildingAdmin) {
         if (buildingAdminMapper == null) {
             buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);
@@ -27,7 +27,7 @@ public class BuildingAdminService {
         return result;
     }
 
-    //更新楼宇
+    //更新楼宇管理员
     public int updateBuildingAdmin(BuildingAdmin buildingAdmin) {
         if (buildingAdminMapper == null) {
             buildingAdminMapper = BaseDao.getSqlSession().getMapper(BuildingAdminMapper.class);

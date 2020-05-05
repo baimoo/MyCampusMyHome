@@ -118,8 +118,6 @@
                             <p class="help-block small">(请不要在公用电脑勾选此项)</p>
                         </div>
                         <button class="btn btn-success btn-block loginbtn">登录</button>
-                        <a class="btn btn-default btn-block" href="#">注册</a>
-                        <a class="btn btn-default btn-block" href="#">忘记密码？</a>
                     </form>
                 </div>
             </div>

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50628
 File Encoding         : 65001
 
-Date: 2020-04-25 22:19:36
+Date: 2020-05-05 17:47:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,7 @@ CREATE TABLE `building` (
   PRIMARY KEY (`bdid`),
   KEY `building_buildingAdmin_baid` (`baid`),
   CONSTRAINT `building_buildingAdmin_baid` FOREIGN KEY (`baid`) REFERENCES `buildingadmin` (`baid`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of building
@@ -50,7 +50,7 @@ CREATE TABLE `buildingadmin` (
   `sex` int(11) NOT NULL,
   `phone` varchar(11) NOT NULL,
   PRIMARY KEY (`baid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of buildingadmin
@@ -76,7 +76,7 @@ CREATE TABLE `late` (
   KEY `late_buildingadmin_baid` (`baid`),
   CONSTRAINT `late_buildingadmin_baid` FOREIGN KEY (`baid`) REFERENCES `buildingadmin` (`baid`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `late_student_sid` FOREIGN KEY (`sid`) REFERENCES `student` (`sid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of late
@@ -102,6 +102,7 @@ INSERT INTO `late` VALUES ('18', '2020-04-18', '沉迷学习忘记归寝', '2018
 INSERT INTO `late` VALUES ('19', '2020-04-19', '沉迷学习忘记归寝', '20185136', '3');
 INSERT INTO `late` VALUES ('20', '2020-04-20', '沉迷学习忘记归寝', '20185136', '3');
 INSERT INTO `late` VALUES ('21', '2020-04-21', '沉迷学习忘记归寝', '20185136', '3');
+INSERT INTO `late` VALUES ('22', '2020-04-08', '看这人名字有杀气，警告一下', '20184498', '2');
 
 -- ----------------------------
 -- Table structure for quit
@@ -118,12 +119,14 @@ CREATE TABLE `quit` (
   KEY `quit_buildingAdmin_baid` (`baid`),
   CONSTRAINT `quit_buildingAdmin_baid` FOREIGN KEY (`baid`) REFERENCES `buildingadmin` (`baid`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `quit_student_sid` FOREIGN KEY (`sid`) REFERENCES `student` (`sid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of quit
 -- ----------------------------
 INSERT INTO `quit` VALUES ('1', '20185136', '2020-04-25', '受不了楼宇管理员的唠叨，干脆搬走', '3');
+INSERT INTO `quit` VALUES ('2', '20181102', '2020-05-04', '毕业离校', '2');
+INSERT INTO `quit` VALUES ('3', '20181317', '2020-05-05', '毕业离校', '2');
 
 -- ----------------------------
 -- Table structure for room
@@ -140,7 +143,7 @@ CREATE TABLE `room` (
   UNIQUE KEY `u_code` (`code`),
   KEY `room_building_bdid` (`bdid`),
   CONSTRAINT `room_building_bdid` FOREIGN KEY (`bdid`) REFERENCES `building` (`bdid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of room
@@ -165,6 +168,36 @@ INSERT INTO `room` VALUES ('17', 'E1001', '5', '4', '13706624513', '四人间');
 INSERT INTO `room` VALUES ('18', 'E1002', '5', '4', '13603846149', '四人间');
 INSERT INTO `room` VALUES ('19', 'E1003', '5', '4', '15803022596', '四人间');
 INSERT INTO `room` VALUES ('20', 'E1004', '5', '4', '13903982479', '四人间');
+INSERT INTO `room` VALUES ('21', 'D2623', '4', '4', '18883349928', '四人间');
+
+-- ----------------------------
+-- Table structure for roomchange
+-- ----------------------------
+DROP TABLE IF EXISTS `roomchange`;
+CREATE TABLE `roomchange` (
+  `rcid` int(11) NOT NULL AUTO_INCREMENT,
+  `sid` varchar(10) NOT NULL,
+  `date` date NOT NULL,
+  `oldrid` int(11) NOT NULL,
+  `nowrid` int(11) NOT NULL,
+  `remark` varchar(255) DEFAULT NULL,
+  `baid` int(11) NOT NULL,
+  PRIMARY KEY (`rcid`),
+  KEY `rc_room_rid1` (`oldrid`),
+  KEY `rc_room_rid2` (`nowrid`),
+  KEY `rc_buildingAdmin_baid` (`baid`),
+  KEY `rc_student_sid` (`sid`),
+  CONSTRAINT `rc_buildingAdmin_baid` FOREIGN KEY (`baid`) REFERENCES `buildingadmin` (`baid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `rc_room_rid1` FOREIGN KEY (`oldrid`) REFERENCES `room` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `rc_room_rid2` FOREIGN KEY (`nowrid`) REFERENCES `room` (`rid`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `rc_student_sid` FOREIGN KEY (`sid`) REFERENCES `student` (`sid`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of roomchange
+-- ----------------------------
+INSERT INTO `roomchange` VALUES ('1', '20181578', '2020-05-04', '1', '6', '该生说室友太帅，感觉自己不配与他们住一起', '2');
+INSERT INTO `roomchange` VALUES ('2', '20181578', '2020-05-05', '6', '1', '无', '2');
 
 -- ----------------------------
 -- Table structure for student
@@ -177,7 +210,7 @@ CREATE TABLE `student` (
   `sex` int(11) NOT NULL,
   `cName` varchar(20) NOT NULL,
   `state` int(11) NOT NULL,
-  `rid` int(11) NOT NULL,
+  `rid` int(11) DEFAULT NULL,
   PRIMARY KEY (`sid`),
   KEY `student_room_rid` (`rid`),
   CONSTRAINT `student_room_rid` FOREIGN KEY (`rid`) REFERENCES `room` (`rid`) ON UPDATE CASCADE
@@ -186,8 +219,8 @@ CREATE TABLE `student` (
 -- ----------------------------
 -- Records of student
 -- ----------------------------
-INSERT INTO `student` VALUES ('20181102', '123', '段刭拔', '0', '计网1班', '0', '6');
-INSERT INTO `student` VALUES ('20181317', '123', '欧城胗', '1', '媒体1班', '0', '19');
+INSERT INTO `student` VALUES ('20181102', '123', '段刭拔', '0', '计网1班', '1', '6');
+INSERT INTO `student` VALUES ('20181317', '123', '欧城胗', '0', '媒体1班', '1', '19');
 INSERT INTO `student` VALUES ('20181578', '123', '乐洌兴', '0', '大数据1班', '0', '1');
 INSERT INTO `student` VALUES ('20181859', '123', '骆狮趺', '1', '大数据1班', '0', '1');
 INSERT INTO `student` VALUES ('20182046', '123', '东郭沣蚰', '1', '图文2班', '0', '17');

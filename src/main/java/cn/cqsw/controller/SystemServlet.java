@@ -26,6 +26,7 @@ import java.io.IOException;
  */
 @WebServlet("/system")
 public class SystemServlet extends BaseServlet {
+    //登录
     public void login(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         int level = new Integer(req.getParameter("level"));
         String username = req.getParameter("username");
@@ -100,6 +101,7 @@ public class SystemServlet extends BaseServlet {
 
     }
 
+    //退出
     public void exit(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         System.out.println("退出登录，删除cookie");
         Cookie cookieLevel = new Cookie("level", "");
@@ -122,6 +124,54 @@ public class SystemServlet extends BaseServlet {
             e.printStackTrace();
         }
 
+    }
+
+    //修改信息
+    public void modify(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        int level = (int) session.getAttribute("level");
+        switch (level) {
+            case 0:
+                new SystemAdminServlet().updateSystemAdmin(req, resp);
+                break;
+            case 1:
+                new BuildingAdimnServlet().updateBuildingAdmin2(req, resp);
+                break;
+            case 2:
+                new StudentServlet().updateStudent2(req, resp);
+                break;
+            default:
+                req.setAttribute("logMsg", "身份验证出错！请重新登录");
+                try {
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
+
+    //修改信息
+    public void modifyPwd(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession();
+        int level = (int) session.getAttribute("level");
+        switch (level) {
+            case 0:
+                new SystemAdminServlet().updateSystemAdminPwd(req, resp);
+                break;
+            case 1:
+                new BuildingAdimnServlet().updateBuildingAdminPwd(req, resp);
+                break;
+            case 2:
+                new StudentServlet().updateStudentPwd(req, resp);
+                break;
+            default:
+                req.setAttribute("logMsg", "身份验证出错！请重新登录");
+                try {
+                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                } catch (ServletException e) {
+                    e.printStackTrace();
+                }
+        }
     }
 
 }

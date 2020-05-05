@@ -19,4 +19,15 @@
     <select id="selectBuildingAdmins" resultMap="r1">
       select * from BuildingAdmin
     </select>
+    <update id="updateBuildingAdmin">
+        update buildingAdmin
+        <trim prefix="set" suffixOverrides=",">
+            <if test="uid!=null">uid=#{uid},</if>
+            <if test="name!=null">`name`=#{name},</if>
+            <if test="sex!=null">sex=#{sex},</if>
+            <if test="pwd!=null">pwd=#{pwd},</if>
+            <if test="phone!=null">phone=#{phone},</if>
+        </trim>
+        where baid=#{baid}
+    </update>
 </mapper>

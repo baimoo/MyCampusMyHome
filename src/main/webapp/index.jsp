@@ -95,23 +95,23 @@
                     </li>
                     <c:if test="${level eq 0}">
                         <li>
-                            <a title="楼宇管理员管理" href="/ba?method=selectBuildingAdmins"><span
+                            <a title="楼宇管理员管理" href="ba?method=selectBuildingAdmins"><span
                                     class="educate-icon educate-professor icon-wrap"></span><span
                                     class="mini-click-non">楼宇管理员管理</span></a>
                         </li>
                         <li>
-                            <a title="学生管理" href="/student?method=selectStudents"><span
+                            <a title="学生管理" href="student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
                                     class="mini-click-non">&nbsp;学生管理</span></a>
                         </li>
                         <li>
 
-                            <a title="楼宇管理" href="/bd?method=selectBuildings"><span
+                            <a title="楼宇管理" href="bd?method=selectBuildings"><span
                                     class="educate-icon educate-course icon-wrap"></span> <span
                                     class="mini-click-non">楼宇管理</span></a>
                         </li>
                         <li>
-                            <a title="宿舍管理" href="/room?method=selectRooms"><span
+                            <a title="宿舍管理" href="room?method=selectRooms"><span
                                     class="educate-icon educate-event icon-wrap sub-icon-mg"></span><span
                                     class="mini-click-non">宿舍管理</span></a>
                         </li>
@@ -121,10 +121,6 @@
                             <a title="学生管理" href="student?method=selectStudents"><span
                                     class="educate-icon educate-student icon-wrap"></span><span
                                     class="mini-click-non">&nbsp;学生管理</span></a>
-                        </li>
-                        <li>
-                            <a title="学生入住登记" href="a_all-courses.html"><span
-                                    class="educate-icon educate-library icon-wrap"></span> <span class="mini-click-non">学生入住登记</span></a>
                         </li>
                         <li>
                             <a title="学生寝室调换" href="rc?method=selectRoomChanges"><span
@@ -144,11 +140,6 @@
                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                     class="mini-click-non">学生缺寝记录</span></a>
                         </li>
-                        <li>
-                            <a title="迁出记录" href="a_mailbox.html"><span
-                                    class="educate-icon educate-apps icon-wrap"></span>
-                                <span class="mini-click-non">迁出记录</span></a>
-                        </li>
                     </c:if>
                     <c:if test="${level eq 2}">
                         <li>
@@ -158,7 +149,8 @@
                         </li>
                     </c:if>
                     <li id="removable">
-                        <a title="退出系统" href="system?method=exit" onclick="return confirm('提示：确认退出登录？')"><span
+                        <a title="退出系统" href="javascript:void(0)" data-target="#exit"
+                           data-toggle="modal"><span
                                 class="educate-icon educate-pages icon-wrap"></span> <span
                                 class="mini-click-non">退出系统</span></a>
                     </li>
@@ -227,14 +219,16 @@
                                                 <!--用户名下功能菜单-->
                                                 <ul role="menu"
                                                     class="dropdown-header-top author-log dropdown-menu animated zoomIn">
-                                                    <li><a href="#"><span
+                                                    <li><a href="javascript:void(0)" data-target="#modinfo"
+                                                           data-toggle="modal"><span
                                                             class="edu-icon edu-home-admin author-log-ic"></span>修改信息</a>
                                                     </li>
-                                                    <li><a href="#"><span
+                                                    <li><a href="javascript:void(0)" data-target="#modpwd"
+                                                           data-toggle="modal"><span
                                                             class="edu-icon edu-user-rounded author-log-ic"></span>重置密码</a>
                                                     </li>
-                                                    <li><a title="退出系统" href="/system?method=exit"
-                                                           onclick="return confirm('提示：确认退出登录？')"><span
+                                                    <li><a title="退出系统" href="javascript:void(0)" data-target="#exit"
+                                                           data-toggle="modal"><span
                                                             class="edu-icon edu-locked author-log-ic"></span>退出登录</a>
                                                     </li>
                                                 </ul>
@@ -244,6 +238,188 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 修改信息模态框（Modal） -->
+        <div class="modal fade" id="modinfo" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title">修改信息</h4>
+                    </div>
+                    <form method="post" action="system">
+                        <input type="hidden" name="method" value="modify">
+                        <div class="container-fluid">
+                            <c:if test="${level eq 0}">
+                                <input type="hidden" name="said" value="${login.said}">
+                                <div class="form-group-inner">
+                                    <label>帐号</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                           name="sid" value="${login.uid}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="10字以内中文字符" name="name" value="${login.name}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>性别</label>
+                                    <select class="form-control custom-select-value" name="sex">
+                                        <option value="1" <c:if test="${login.sex eq 1}">selected="selected"</c:if>>男
+                                        </option>
+                                        <option value="0" <c:if test="${login.sex eq 0}">selected="selected"</c:if>>女
+                                        </option>
+                                    </select>
+                                </div>
+                            </c:if>
+                            <c:if test="${level eq 1}">
+                                <input type="hidden" name="baid" value="${login.baid}">
+                                <div class="form-group-inner">
+                                    <label>帐号</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                           name="sid" value="${login.uid}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="10字以内中文字符" name="name" value="${login.name}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>性别</label>
+                                    <select class="form-control custom-select-value" name="sex">
+                                        <option value="1" <c:if test="${login.sex eq 1}">selected="selected"</c:if>>男
+                                        </option>
+                                        <option value="0" <c:if test="${login.sex eq 0}">selected="selected"</c:if>>女
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>手机号</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="11位手机号" name="phone" value="${login.phone}">
+                                </div>
+                            </c:if>
+                            <c:if test="${level eq 2}">
+                                <input type="hidden" name="state" value="${login.state}">
+                                <div class="form-group-inner">
+                                    <label>学号</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                           name="sid" value="${login.sid}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>姓名</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="10字以内中文字符" name="name" value="${login.name}">
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>性别</label>
+                                    <select class="form-control custom-select-value" name="sex">
+                                        <option value="1" <c:if test="${login.sex eq 1}">selected="selected"</c:if>>男
+                                        </option>
+                                        <option value="0" <c:if test="${login.sex eq 0}">selected="selected"</c:if>>女
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group-inner">
+                                    <label>班级</label>
+                                    <input type="text" class="form-control"
+                                           placeholder="20位以内字符" name="cName" value="${login.cName}">
+                                </div>
+                            </c:if>
+                        </div>
+                        <br/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">关闭
+                            </button>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 修改密码模态框（Modal） -->
+        <div class="modal fade" id="modpwd" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title">修改密码</h4>
+                    </div>
+                    <form method="post" action="system">
+                        <input type="hidden" name="method" value="modifyPwd">
+                        <div class="container-fluid">
+                            <div class="form-group-inner">
+                                <c:if test="${level eq 0 or level eq 1}">
+                                    <label>帐号</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                           name="sid" value="${login.uid}"></c:if>
+                                <c:if test="${level eq 2}">
+                                    <label>学号</label>
+                                    <input type="text" class="form-control" readonly="readonly"
+                                           name="sid" value="${login.sid}"></c:if>
+                            </div>
+                            <div class="form-group-inner">
+                                <label>旧密码</label>
+                                <input type="password" class="form-control"
+                                       placeholder="请输入旧密码" name="pwd">
+                            </div>
+                            <div class="form-group-inner">
+                                <label>新密码</label>
+                                <input type="password" class="form-control"
+                                       placeholder="20位以内字符" name="pwd2">
+                            </div>
+                            <div class="form-group-inner">
+                                <label>确认密码</label>
+                                <input type="password" class="form-control"
+                                       placeholder="20位以内字符">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default"
+                                    data-dismiss="modal">关闭
+                            </button>
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- 退出登录模态框（Modal） -->
+        <div class="modal fade" id="exit" tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">×
+                        </button>
+                        <h4 class="modal-title">友情提示</h4>
+                    </div>
+                    <br/>
+                    <div class="container-fluid">
+                        <h4>您确定要退出登录吗？
+                        </h4>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="system?method=exit"
+                           class="btn btn-danger"
+                           style="color: white">要你管！</a>
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">算了吧..
+                        </button>
                     </div>
                 </div>
             </div>
@@ -288,14 +464,9 @@
                                     </c:if>
                                     <c:if test="${level eq 1}">
                                         <li>
-                                            <a title="学生管理" href="/student?method=selectStudents"><span
+                                            <a title="学生管理" href="student?method=selectStudents"><span
                                                     class="educate-icon educate-student icon-wrap"></span><span
                                                     class="mini-click-non">&nbsp;学生管理</span></a>
-                                        </li>
-                                        <li>
-                                            <a title="学生入住登记" href="a_all-courses.html"><span
-                                                    class="educate-icon educate-library icon-wrap"></span> <span
-                                                    class="mini-click-non">学生入住登记</span></a>
                                         </li>
                                         <li>
                                             <a title="学生寝室调换" href="rc?method=selectRoomChanges"><span
@@ -305,7 +476,7 @@
                                         </li>
 
                                         <li>
-                                            <a title="学生迁出管理" href="/quit?method=selectQuits"><span
+                                            <a title="学生迁出管理" href="quit?method=selectQuits"><span
                                                     class="educate-icon educate-interface icon-wrap"></span> <span
                                                     class="mini-click-non">学生迁出管理</span></a>
                                         </li>
@@ -314,11 +485,6 @@
                                             <a title="学生缺寝记录" href="late?method=selectLates"><span
                                                     class="educate-icon educate-data-table icon-wrap"></span> <span
                                                     class="mini-click-non">学生缺寝记录</span></a>
-                                        </li>
-                                        <li>
-                                            <a title="迁出记录" href="a_mailbox.html"><span
-                                                    class="educate-icon educate-apps icon-wrap"></span>
-                                                <span class="mini-click-non">迁出记录</span></a>
                                         </li>
                                     </c:if>
                                     <c:if test="${level eq 2}">
@@ -329,8 +495,8 @@
                                         </li>
                                     </c:if>
                                     <li id="removable">
-                                        <a title="退出系统" href="system?method=exit"
-                                           onclick="return confirm('提示：确认退出登录？')"><span
+                                        <a title="退出系统" href="javascript:void(0)" data-target="#exit"
+                                           data-toggle="modal"><span
                                                 class="educate-icon educate-pages icon-wrap"></span> <span
                                                 class="mini-click-non">退出系统</span></a>
                                     </li>
@@ -473,4 +639,12 @@
 <script src="js/main.js"></script>
 </body>
 
+<script>
+    $(function () {
+        //提示信息
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+        </c:if>
+    });
+</script>
 </html>

@@ -798,10 +798,7 @@
         <c:if test="${not empty errorMsg}">
         alert("${errorMsg}");
         </c:if>
-
-
     });
-
 </script>
 
 </body>

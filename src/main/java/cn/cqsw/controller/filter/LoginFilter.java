@@ -55,6 +55,7 @@ public class LoginFilter implements Filter {
         HttpSession session = request.getSession();
         session.setAttribute("time", Tools.getDate());//设置时间
         if (username != null && !username.trim().equals("") && password != null && !password.trim().equals("") && level != -1) {
+            System.out.println("自动登录");
             boolean flag = false;
             switch (level) {
                 case 0://系统管理员
@@ -106,6 +107,7 @@ public class LoginFilter implements Filter {
         } else {
             Object loginUser = session.getAttribute("login");
             if (loginUser != null) {
+                System.out.println("已登录，放行");
                 //放行
                 filterChain.doFilter(request, servletResponse);
             } else {

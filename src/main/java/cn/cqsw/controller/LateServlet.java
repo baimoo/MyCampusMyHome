@@ -28,10 +28,11 @@ public class LateServlet extends BaseServlet {
         int level = (int) session.getAttribute("level");
         List<Late> lates = null;
         if (level == 1) {//楼宇管理员
-            System.out.println("楼宇管理员");
-            lates = new LateService().selectLates();
-            req.setAttribute("lates", lates);
             try {
+                System.out.println("楼宇管理员");
+                lates = new LateService().selectLates();
+                req.setAttribute("lates", lates);
+
                 req.getRequestDispatcher("/lateList.jsp").forward(req, resp);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -58,15 +59,16 @@ public class LateServlet extends BaseServlet {
 
     //新增缺寝记录
     public void insertLate(HttpServletRequest req, HttpServletResponse resp) {
-        String date = req.getParameter("date");//缺寝时间
-        String remark = req.getParameter("remark");//缺寝备注
-        String sid = req.getParameter("sid");//学生sid
-        Student student = new Student();//学生
-        student.setSid(sid);
-        BuildingAdmin buildingAdmin = (BuildingAdmin) req.getSession().getAttribute("login");//楼宇管理员
-        Late late = new Late(0, date, remark, student, buildingAdmin);
         int flag = 0;
         try {
+            String date = req.getParameter("date");//缺寝时间
+            String remark = req.getParameter("remark");//缺寝备注
+            String sid = req.getParameter("sid");//学生sid
+            Student student = new Student();//学生
+            student.setSid(sid);
+            BuildingAdmin buildingAdmin = (BuildingAdmin) req.getSession().getAttribute("login");//楼宇管理员
+            Late late = new Late(0, date, remark, student, buildingAdmin);
+
             flag = new LateService().insertLate(late);
         } catch (Exception e) {
             e.printStackTrace();

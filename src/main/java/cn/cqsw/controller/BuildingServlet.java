@@ -27,12 +27,13 @@ import java.util.List;
 public class BuildingServlet extends BaseServlet {
     //查询所有楼宇
     public void selectBuildings(HttpServletRequest req, HttpServletResponse resp) {
-        List<Building> buildings = new BuildingService().selectBuildings();
-        List<BuildingAdmin> buildingAdmins = new BuildingAdminService().selectBuildingAdmins();
-        HttpSession session = req.getSession();
-        session.setAttribute("buildings", buildings);
-        session.setAttribute("buildingAdmins", buildingAdmins);
         try {
+            List<Building> buildings = new BuildingService().selectBuildings();
+            List<BuildingAdmin> buildingAdmins = new BuildingAdminService().selectBuildingAdmins();
+            HttpSession session = req.getSession();
+            session.setAttribute("buildings", buildings);
+            session.setAttribute("buildingAdmins", buildingAdmins);
+
             req.getRequestDispatcher("/buildingList.jsp").forward(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -44,9 +45,10 @@ public class BuildingServlet extends BaseServlet {
 
     //通过bdid删除楼宇
     public void deleteBuilding(HttpServletRequest req, HttpServletResponse resp) {
-        int bdid = new Integer(req.getParameter("bdid"));
         int flag = 0;
         try {
+            int bdid = new Integer(req.getParameter("bdid"));
+
             flag = new BuildingService().deleteBuildingByBdid(bdid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,15 +64,16 @@ public class BuildingServlet extends BaseServlet {
 
     //更新楼宇
     public void updateBuilding(HttpServletRequest req, HttpServletResponse resp) {
-        int bdid = new Integer(req.getParameter("bdid"));
-        int baid = new Integer(req.getParameter("baid"));
-        String name = req.getParameter("name");
-        String remark = req.getParameter("remark");
-        BuildingAdmin buildingAdmin = new BuildingAdmin();
-        buildingAdmin.setBaid(baid);
-        Building building = new Building(bdid, name, buildingAdmin, remark, null);
         int flag = 0;
         try {
+            int bdid = new Integer(req.getParameter("bdid"));
+            int baid = new Integer(req.getParameter("baid"));
+            String name = req.getParameter("name");
+            String remark = req.getParameter("remark");
+            BuildingAdmin buildingAdmin = new BuildingAdmin();
+            buildingAdmin.setBaid(baid);
+            Building building = new Building(bdid, name, buildingAdmin, remark, null);
+
             flag = new BuildingService().updateBuilding(building);
         } catch (Exception e) {
             e.printStackTrace();
@@ -86,14 +89,15 @@ public class BuildingServlet extends BaseServlet {
 
     //新增楼宇
     public void insertBuilding(HttpServletRequest req, HttpServletResponse resp) {
-        int baid = new Integer(req.getParameter("baid"));
-        String name = req.getParameter("name");
-        String remark = req.getParameter("remark");
-        BuildingAdmin buildingAdmin = new BuildingAdmin();
-        buildingAdmin.setBaid(baid);
-        Building building = new Building(0, name, buildingAdmin, remark, null);
         int flag = 0;
         try {
+            int baid = new Integer(req.getParameter("baid"));
+            String name = req.getParameter("name");
+            String remark = req.getParameter("remark");
+            BuildingAdmin buildingAdmin = new BuildingAdmin();
+            buildingAdmin.setBaid(baid);
+            Building building = new Building(0, name, buildingAdmin, remark, null);
+
             flag = new BuildingService().insertBuilding(building);
         } catch (Exception e) {
             e.printStackTrace();
@@ -109,10 +113,11 @@ public class BuildingServlet extends BaseServlet {
 
     //查询楼宇（只要楼宇号）用于ajax
     public void selectOneBuildings(HttpServletRequest req, HttpServletResponse resp) {
-        List<Building> buildings = new BuildingService().selectOneBuildings();
-        String s = JSON.toJSONString(buildings);
-        resp.setContentType("text/html;charset=UTF-8");
         try {
+            List<Building> buildings = new BuildingService().selectOneBuildings();
+            String s = JSON.toJSONString(buildings);
+            resp.setContentType("text/html;charset=UTF-8");
+
             resp.getWriter().write(s);
         } catch (IOException e) {
             e.printStackTrace();

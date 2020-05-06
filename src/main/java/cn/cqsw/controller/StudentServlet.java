@@ -29,13 +29,14 @@ import java.util.List;
 public class StudentServlet extends BaseServlet {
     //查询所有学生
     public void selectStudents(HttpServletRequest req, HttpServletResponse resp) {
-        List<Student> students = new StudentService().selectStudents();
+        try {
+            List<Student> students = new StudentService().selectStudents();
         List<Building> buildings = new BuildingService().selectBuildings();
         HttpSession session = req.getSession();
         session.setAttribute("students", students);
         session.setAttribute("buildings", buildings);
         int level = (int) session.getAttribute("level");
-        try {
+
             if (level != 2) {
                 req.getRequestDispatcher("/studentList.jsp").forward(req, resp);
             } else {
@@ -51,9 +52,10 @@ public class StudentServlet extends BaseServlet {
 
     //通过sid删除学生
     public void delBuildingAdminByBaid(HttpServletRequest req, HttpServletResponse resp) {
-        String sid = req.getParameter("sid");
         int flag = 0;
         try {
+            String sid = req.getParameter("sid");
+
             flag = new StudentService().deleteStudentBySid(sid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,9 +85,9 @@ public class StudentServlet extends BaseServlet {
         } catch (Exception e) {
             System.err.println("未获取到寝室！");
         } finally {
-            Student student = new Student(sid, pwd, name, sex, cName, state, room, null);
             int flag = 0;
             try {
+                Student student = new Student(sid, pwd, name, sex, cName, state, room, null);
                 flag = new StudentService().updateStudent(student);
             } catch (Exception e) {
                 e.printStackTrace();

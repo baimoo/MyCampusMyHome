@@ -26,9 +26,10 @@ import java.util.List;
 public class QuitServlet extends BaseServlet {
     //查询所有记录
     public void selectQuits(HttpServletRequest req, HttpServletResponse resp) {
-        List<Quit> quits = new QuitService().selectQuits();
-        req.setAttribute("quits", quits);
         try {
+            List<Quit> quits = new QuitService().selectQuits();
+            req.setAttribute("quits", quits);
+
             req.getRequestDispatcher("/quitList.jsp").forward(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -39,17 +40,18 @@ public class QuitServlet extends BaseServlet {
 
     //添加迁出记录
     public void insertQuit(HttpServletRequest req, HttpServletResponse resp) {
-        String sid = req.getParameter("sid");
-        String time = req.getParameter("time");
-        String remark = req.getParameter("remark");
-        HttpSession session = req.getSession();
-        BuildingAdmin buildingAdmin = (BuildingAdmin) session.getAttribute("login");
-        Student student = new Student();
-        student.setSid(sid);
-        student.setState(1);
-        Quit quit = new Quit(0, student, time, remark, buildingAdmin);
         int flag = 0;
         try {
+            String sid = req.getParameter("sid");
+            String time = req.getParameter("time");
+            String remark = req.getParameter("remark");
+            HttpSession session = req.getSession();
+            BuildingAdmin buildingAdmin = (BuildingAdmin) session.getAttribute("login");
+            Student student = new Student();
+            student.setSid(sid);
+            student.setState(1);
+            Quit quit = new Quit(0, student, time, remark, buildingAdmin);
+
             flag = new QuitService().insertQuit(quit);
         } catch (Exception e) {
             e.printStackTrace();

@@ -27,11 +27,12 @@ import java.util.List;
 public class RoomServlet extends BaseServlet {
     //通过楼宇id查询寝室
     public void selectRoomsByBdid(HttpServletRequest req, HttpServletResponse resp) {
-        int bdid = new Integer(req.getParameter("bdid"));
-        List<Room> rooms = new RoomService().selectRoomsByBdid(bdid);
-        String s = JSON.toJSONString(rooms);
-        resp.setContentType("text/html;charset=UTF-8");
         try {
+            int bdid = new Integer(req.getParameter("bdid"));
+            List<Room> rooms = new RoomService().selectRoomsByBdid(bdid);
+            String s = JSON.toJSONString(rooms);
+            resp.setContentType("text/html;charset=UTF-8");
+
             resp.getWriter().write(s);
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,12 +41,13 @@ public class RoomServlet extends BaseServlet {
 
     //查询所有宿舍
     public void selectRooms(HttpServletRequest req, HttpServletResponse resp) {
-        List<Room> rooms = new RoomService().selectRooms();
-        List<Building> buildings = new BuildingService().selectBuildings();
-        HttpSession session = req.getSession();
-        session.setAttribute("rooms", rooms);
-        session.setAttribute("buildings", buildings);
         try {
+            List<Room> rooms = new RoomService().selectRooms();
+            List<Building> buildings = new BuildingService().selectBuildings();
+            HttpSession session = req.getSession();
+            session.setAttribute("rooms", rooms);
+            session.setAttribute("buildings", buildings);
+
             req.getRequestDispatcher("/roomList.jsp").forward(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -56,9 +58,10 @@ public class RoomServlet extends BaseServlet {
 
     //通过rid删除宿舍
     public void deleteRoomByRid(HttpServletRequest req, HttpServletResponse resp) {
-        int rid = new Integer(req.getParameter("rid"));
         int flag = 0;
         try {
+            int rid = new Integer(req.getParameter("rid"));
+
             flag = new RoomService().deleteRoomByRid(rid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,18 +77,19 @@ public class RoomServlet extends BaseServlet {
 
     //更新寝室
     public void updateRoom(HttpServletRequest req, HttpServletResponse resp) {
-        int rid = new Integer(req.getParameter("rid"));
-        int bdid = new Integer(req.getParameter("bdid"));
-        //TODO  无法获取到值
-        int num = new Integer(req.getParameter("num"));
-        String code = req.getParameter("code");
-        String phone = req.getParameter("phone");
-        String type = req.getParameter("type");
-        Building building = new Building();
-        building.setBdid(bdid);
-        Room room = new Room(rid, code, building, num, phone, type, null);
         int flag = 0;
         try {
+            int rid = new Integer(req.getParameter("rid"));
+            int bdid = new Integer(req.getParameter("bdid"));
+            //TODO  无法获取到值
+            int num = new Integer(req.getParameter("num"));
+            String code = req.getParameter("code");
+            String phone = req.getParameter("phone");
+            String type = req.getParameter("type");
+            Building building = new Building();
+            building.setBdid(bdid);
+            Room room = new Room(rid, code, building, num, phone, type, null);
+
             flag = new RoomService().updateRoom(room);
         } catch (Exception e) {
             e.printStackTrace();
@@ -101,16 +105,16 @@ public class RoomServlet extends BaseServlet {
 
     //新增寝室
     public void insertRoom(HttpServletRequest req, HttpServletResponse resp) {
-        int bdid = new Integer(req.getParameter("bdid"));
-        int num = new Integer(req.getParameter("num"));
-        String code = req.getParameter("code");
-        String phone = req.getParameter("phone");
-        String type = req.getParameter("type");
-        Building building = new Building();
-        building.setBdid(bdid);
-        Room room = new Room(0, code, building, num, phone, type, null);
         int flag = 0;
         try {
+            int bdid = new Integer(req.getParameter("bdid"));
+            int num = new Integer(req.getParameter("num"));
+            String code = req.getParameter("code");
+            String phone = req.getParameter("phone");
+            String type = req.getParameter("type");
+            Building building = new Building();
+            building.setBdid(bdid);
+            Room room = new Room(0, code, building, num, phone, type, null);
             flag = new RoomService().insertRoom(room);
         } catch (Exception e) {
             e.printStackTrace();

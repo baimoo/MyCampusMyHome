@@ -26,10 +26,11 @@ import java.util.List;
 public class RoomChangeServlet extends BaseServlet {
     //查询所有调换记录
     public void selectRoomChanges(HttpServletRequest req, HttpServletResponse resp) {
-        List<RoomChange> roomChanges = new RoomChangeService().selectRoomChanges();
-        HttpSession session = req.getSession();
-        session.setAttribute("roomChanges", roomChanges);
         try {
+            List<RoomChange> roomChanges = new RoomChangeService().selectRoomChanges();
+            HttpSession session = req.getSession();
+            session.setAttribute("roomChanges", roomChanges);
+
             req.getRequestDispatcher("/roomChangeList.jsp").forward(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -40,23 +41,24 @@ public class RoomChangeServlet extends BaseServlet {
 
     //添加调换记录
     public void insertRoomChange(HttpServletRequest req, HttpServletResponse resp) {
-        String sid = req.getParameter("sid");
-        String date = req.getParameter("date");
-        String remark = req.getParameter("remark");
-        int oldrid = new Integer(req.getParameter("oldrid"));
-        int nowrid = new Integer(req.getParameter("nowrid"));
-        HttpSession session = req.getSession();
-        BuildingAdmin buildingAdmin = (BuildingAdmin) session.getAttribute("login");
-        Student student = new Student();
-        student.setSid(sid);
-        Room oldRoom = new Room();
-        oldRoom.setRid(oldrid);
-        Room nowRoom = new Room();
-        nowRoom.setRid(nowrid);
-        student.setRoom(nowRoom);
-        RoomChange roomChange = new RoomChange(0, student, date, oldRoom, nowRoom, remark, buildingAdmin);
         int flag = 0;
         try {
+            String sid = req.getParameter("sid");
+            String date = req.getParameter("date");
+            String remark = req.getParameter("remark");
+            int oldrid = new Integer(req.getParameter("oldrid"));
+            int nowrid = new Integer(req.getParameter("nowrid"));
+            HttpSession session = req.getSession();
+            BuildingAdmin buildingAdmin = (BuildingAdmin) session.getAttribute("login");
+            Student student = new Student();
+            student.setSid(sid);
+            Room oldRoom = new Room();
+            oldRoom.setRid(oldrid);
+            Room nowRoom = new Room();
+            nowRoom.setRid(nowrid);
+            student.setRoom(nowRoom);
+            RoomChange roomChange = new RoomChange(0, student, date, oldRoom, nowRoom, remark, buildingAdmin);
+
             flag = new RoomChangeService().insertRoomChange(roomChange);
         } catch (Exception e) {
             e.printStackTrace();

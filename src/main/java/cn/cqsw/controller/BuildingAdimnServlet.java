@@ -25,10 +25,11 @@ import java.util.List;
 public class BuildingAdimnServlet extends BaseServlet {
     //查询所有楼宇管理员
     public void selectBuildingAdmins(HttpServletRequest req, HttpServletResponse resp) {
-        List<BuildingAdmin> buildingAdmins = new BuildingAdminService().selectBuildingAdmins();
-        HttpSession session = req.getSession();
-        session.setAttribute("buildingAdmins", buildingAdmins);
         try {
+            List<BuildingAdmin> buildingAdmins = new BuildingAdminService().selectBuildingAdmins();
+            HttpSession session = req.getSession();
+            session.setAttribute("buildingAdmins", buildingAdmins);
+
             req.getRequestDispatcher("/buildingAdminList.jsp").forward(req, resp);
         } catch (ServletException e) {
             e.printStackTrace();
@@ -40,9 +41,10 @@ public class BuildingAdimnServlet extends BaseServlet {
 
     //通过baid删除楼宇管理员
     public void delBuildingAdminByBaid(HttpServletRequest req, HttpServletResponse resp) {
-        int baid = new Integer(req.getParameter("baid"));
         int flag = 0;
+
         try {
+            int baid = new Integer(req.getParameter("baid"));
             flag = new BuildingAdminService().deleteBuildingAdminByBaid(baid);
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,15 +60,16 @@ public class BuildingAdimnServlet extends BaseServlet {
 
     //更新楼宇管理员
     public void updateBuildingAdmin(HttpServletRequest req, HttpServletResponse resp) {
-        int baid = new Integer(req.getParameter("baid"));
-        String name = req.getParameter("name");
-        String uid = req.getParameter("uid");
-        String pwd = req.getParameter("pwd");
-        int sex = new Integer(req.getParameter("sex"));
-        String phone = req.getParameter("phone");
-        BuildingAdmin buildingAdmin = new BuildingAdmin(baid, name, uid, pwd, sex, phone, null);
         int flag = 0;
         try {
+            int baid = new Integer(req.getParameter("baid"));
+            String name = req.getParameter("name");
+            String uid = req.getParameter("uid");
+            String pwd = req.getParameter("pwd");
+            int sex = new Integer(req.getParameter("sex"));
+            String phone = req.getParameter("phone");
+            BuildingAdmin buildingAdmin = new BuildingAdmin(baid, name, uid, pwd, sex, phone, null);
+
             flag = new BuildingAdminService().updateBuildingAdmin(buildingAdmin);
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,15 +86,17 @@ public class BuildingAdimnServlet extends BaseServlet {
 
     //更新楼宇管理员(用于修改自身)
     public void updateBuildingAdmin2(HttpServletRequest req, HttpServletResponse resp) {
-        int baid = new Integer(req.getParameter("baid"));
-        String name = req.getParameter("name");
-        String uid = req.getParameter("uid");
-        String pwd = req.getParameter("pwd");
-        int sex = new Integer(req.getParameter("sex"));
-        String phone = req.getParameter("phone");
-        BuildingAdmin buildingAdmin = new BuildingAdmin(baid, name, uid, pwd, sex, phone, null);
         int flag = 0;
+        BuildingAdmin buildingAdmin = null;
         try {
+            int baid = new Integer(req.getParameter("baid"));
+            String name = req.getParameter("name");
+            String uid = req.getParameter("uid");
+            String pwd = req.getParameter("pwd");
+            int sex = new Integer(req.getParameter("sex"));
+            String phone = req.getParameter("phone");
+            buildingAdmin = new BuildingAdmin(baid, name, uid, pwd, sex, phone, null);
+
             flag = new BuildingAdminService().updateBuildingAdmin(buildingAdmin);
         } catch (Exception e) {
             e.printStackTrace();
@@ -163,14 +168,15 @@ public class BuildingAdimnServlet extends BaseServlet {
 
     //新增楼宇管理员
     public void insertBuildingAdmin(HttpServletRequest req, HttpServletResponse resp) {
-        String name = req.getParameter("name");
-        String uid = req.getParameter("uid");
-        String pwd = req.getParameter("pwd");
-        int sex = new Integer(req.getParameter("sex"));
-        String phone = req.getParameter("phone");
-        BuildingAdmin buildingAdmin = new BuildingAdmin(0, name, uid, pwd, sex, phone, null);
         int flag = 0;
         try {
+            String name = req.getParameter("name");
+            String uid = req.getParameter("uid");
+            String pwd = req.getParameter("pwd");
+            int sex = new Integer(req.getParameter("sex"));
+            String phone = req.getParameter("phone");
+            BuildingAdmin buildingAdmin = new BuildingAdmin(0, name, uid, pwd, sex, phone, null);
+
             flag = new BuildingAdminService().insertBuildingAdmin(buildingAdmin);
         } catch (Exception e) {
             e.printStackTrace();

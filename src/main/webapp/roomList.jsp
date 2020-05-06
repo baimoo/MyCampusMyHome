@@ -859,13 +859,12 @@
 <script src="js/touchspin/jquery.bootstrap-touchspin.min.js"></script>
 <script src="js/touchspin/touchspin-active.js"></script>
 </body>
-<!--错误信息-->
-<c:if test="${not empty errorMsg}">
-    <script type="text/javascript">
-        $(function () {
-            alert("${errorMsg}")
-        })
-
-    </script>
-</c:if>
+<script>
+    $(function () {
+        //提示信息
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+        </c:if>
+    });
+</script>
 </html>

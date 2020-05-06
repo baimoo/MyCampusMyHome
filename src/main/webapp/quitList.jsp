@@ -801,10 +801,12 @@
     ============================================ -->
 <script src="js/datapicker/bootstrap-datepicker.js"></script>
 </body>
-<!--提示信息-->
-<c:if test="${not empty errorMsg}">
-    <script type="text/javascript">
-        alert("${errorMsg}")
-    </script>
-</c:if>
+<script>
+    $(function () {
+        //提示信息
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+        </c:if>
+    });
+</script>
 </html>

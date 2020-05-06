@@ -173,5 +173,12 @@
     ============================================ -->
 <script src="js/main.js"></script>
 </body>
-
+<script>
+    $(function () {
+        //提示信息
+        <c:if test="${not empty errorMsg}">
+        alert("${errorMsg}");
+        </c:if>
+    });
+</script>
 </html>

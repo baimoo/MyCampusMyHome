@@ -693,7 +693,8 @@
         //提示信息
         <c:if test="${not empty errorMsg}">
         alert("${errorMsg}");
-    </c:if>
+        </c:if>
+    });
 </script>
 <!-- datapicker JS
     ============================================ -->

@@ -33,7 +33,6 @@ public class SenseWordFilter implements Filter {
             String line = null;
             while ((line = br.readLine()) != null) {
                 senseWords.add(line);
-                System.out.println(line);
             }
         } catch (Exception e) {
             e.printStackTrace();

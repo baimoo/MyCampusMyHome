@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="zh-cmn-Hans">
 
 <head>
     <meta charset="utf-8">

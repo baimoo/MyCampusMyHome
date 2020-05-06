@@ -18,6 +18,6 @@
     </resultMap>
     <!--查询所有调换记录-->
     <select id="selectRoomChanges" resultMap="r1">
-        select * from RoomChange
+        select * from RoomChange ORDER BY date ASC
     </select>
 </mapper>

@@ -15,7 +15,7 @@
                     select="cn.cqsw.mapper.StudentMapper.selectStudentsByRid"></collection>
     </resultMap>
     <select id="selectRoomsByBdid" resultMap="r1">
-        select * from room where bdid=#{bdid};
+        select * from room where bdid=#{bdid} ORDER BY code ASC
     </select>
 
     <resultMap id="r2" type="cn.cqsw.pojo.Room">
@@ -28,9 +28,9 @@
                      select="cn.cqsw.mapper.BuildingMapper.selectBuildingByBdid"></association>
     </resultMap>
     <select id="selectRoomByRid1" resultMap="r2">
-    select * from room where rid=#{rid};
+    select * from room where rid=#{rid}
     </select>
     <select id="selectRooms" resultMap="r2">
-    select * from room;
+    select * from room ORDER BY code ASC
     </select>
 </mapper>

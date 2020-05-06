@@ -47,7 +47,7 @@ public interface StudentMapper {
     List<Student> selectStudentsByRid(int rid);
 
     //通过寝室rid查询已入住学生
-    @Select("select * from student where rid=#{rid} and state=0")
+    @Select("select * from student where rid=#{rid} and state=0 ORDER BY sid ASC")
     List<Student> selectStudentsByRid2(int rid);
 
     //查询所有学生包括寝室号

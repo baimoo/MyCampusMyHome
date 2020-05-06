@@ -26,13 +26,13 @@ public interface BuildingMapper {
     int updateBuilding(Building building);
 
     //通过楼宇管理员baid查询楼宇
-    @Select("select * from Building where baid=#{baid}")
+    @Select("select * from Building where baid=#{baid} ORDER BY name ASC")
     List<Building> selectBuildingsByBaid(int baid);
     //查询所有楼宇
     List<Building> selectBuildings();
 
     //查询所有楼宇
-    @Select("select * from Building")
+    @Select("select * from Building ORDER BY name ASC")
     List<Building> selectOneBuildings();
 
     //通过楼宇编号bdid查询楼宇

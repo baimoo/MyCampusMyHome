@@ -13,9 +13,9 @@
                      select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
     </resultMap>
     <select id="selectLatesBySid2" resultMap="r1">
-    select * from late where sid=#{sid}
+    select * from late where sid=#{sid} ORDER BY date ASC
     </select>
     <select id="selectLates" resultMap="r1">
-    select * from late
+    select * from late ORDER BY date ASC
     </select>
 </mapper>

@@ -14,7 +14,7 @@
         <collection property="lates" column="sid" select="cn.cqsw.mapper.LateMapper.selectLatesBySid"></collection>
     </resultMap>
     <select id="selectStudentsByRid" resultMap="r1">
-        select * from student where rid=#{rid}
+        select * from student where rid=#{rid} ORDER BY sid ASC
     </select>
     <select id="selectStudentBySid" resultMap="r1">
         select * from student where sid=#{sid}
@@ -34,7 +34,7 @@
         <collection property="lates" column="sid" select="cn.cqsw.mapper.LateMapper.selectLatesBySid"></collection>
     </resultMap>
     <select id="selectStudents" resultMap="r2">
-        select * from student
+        select * from student ORDER BY sid ASC
     </select>
     <select id="selectStudentBySid3" resultMap="r2">
         select * from student where sid=#{sid}

@@ -12,6 +12,6 @@
         <collection property="rooms" column="bdid" select="cn.cqsw.mapper.RoomMapper.selectRoomsByBdid"></collection>
     </resultMap>
     <select id="selectBuildings" resultMap="r1">
-        select * from Building;
+        select * from Building ORDER BY name ASC
     </select>
 </mapper>

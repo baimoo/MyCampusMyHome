@@ -29,7 +29,7 @@ public interface RoomMapper {
     List<Room> selectRoomsByBdid(int bdid);
 
     //通过寝室rid查询寝室
-    @Select("select * from room where rid=#{rid}")
+    @Select("select * from room where rid=#{rid} ORDER BY code ASC")
     Room selectRoomByRid(int rid);
 
     //通过寝室rid删除寝室

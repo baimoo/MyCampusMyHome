@@ -20,7 +20,7 @@ public interface LateMapper {
     int insertLate(Late late);
 
     //通过学生学号sid查询缺寝记录
-    @Select("select * from late where sid=#{sid}")
+    @Select("select * from late where sid=#{sid} ORDER BY date ASC")
     List<Late> selectLatesBySid(String sid);
 
     //通过学生学号sid查询缺寝记录

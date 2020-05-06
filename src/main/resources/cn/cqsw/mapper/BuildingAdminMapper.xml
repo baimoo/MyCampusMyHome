@@ -17,7 +17,7 @@
       select * from BuildingAdmin where uid=#{uid} and pwd=#{pwd}
     </select>
     <select id="selectBuildingAdmins" resultMap="r1">
-      select * from BuildingAdmin
+      select * from BuildingAdmin ORDER BY name ASC
     </select>
     <update id="updateBuildingAdmin">
         update buildingAdmin

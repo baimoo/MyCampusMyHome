@@ -13,6 +13,6 @@
                      select="cn.cqsw.mapper.BuildingAdminMapper.selectBuildingAdminByBaid"></association>
     </resultMap>
     <select id="selectQuits" resultMap="r1">
-        select * from quit
+        select * from quit ORDER BY date ASC
     </select>
 </mapper>

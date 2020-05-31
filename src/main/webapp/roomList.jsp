@@ -619,7 +619,7 @@
                     <div class="sparkline13-list">
                         <div class="sparkline13-hd">
                             <div class="main-sparkline13-hd">
-                                <h1>楼宇列表</h1>
+                                <h1>宿舍列表</h1>
                             </div>
                         </div>
                         <div class="sparkline13-graph">

@@ -881,6 +881,7 @@
                                                     <br/>
                                                     <form method="post" action="student">
                                                         <input type="hidden" name="method" value="updateStudent">
+                                                        <input type="hidden" name="state" value="${student.state}">
                                                         <div class="container-fluid">
                                                             <div class="form-group-inner">
                                                                 <label>学号</label>

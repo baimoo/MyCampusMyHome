@@ -25,7 +25,7 @@ public class SenseWordFilter implements Filter {
     public void init(FilterConfig filterConfig) {
         senseWords = new ArrayList<String>();
         //将敏感词汇读取到集合里
-        File file = new File("E:\\Work\\idea\\MyCampusMyHome\\src\\main\\resources\\sense_word.txt");
+        File file = new File("src/main/resources/sense_word.txt");
         try {
             FileInputStream fis = new FileInputStream(file);
             InputStreamReader isr = new InputStreamReader(fis, StandardCharsets.UTF_8);

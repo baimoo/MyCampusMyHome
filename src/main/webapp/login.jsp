@@ -84,7 +84,7 @@
         <div class="content-error">
             <div class="hpanel">
                 <div class="panel-body">
-                    <form action="/system" id="loginForm" method="post">
+                    <form action="${pageContext.request.contextPath}/system" id="loginForm" method="post">
                         <input type="hidden" name="method" value="login">
                         <div class="form-group">
                             <label class="control-label" for="username">身份</label>

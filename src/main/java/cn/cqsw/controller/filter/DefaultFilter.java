@@ -21,7 +21,7 @@ public class DefaultFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-//获取拦截路径
+        //获取拦截路径
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         //放行
         request.setCharacterEncoding("utf-8");
